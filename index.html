@@ -7,790 +7,629 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Taty">
 <title>Taty · Tu Gurú Personal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0D0D0F;
-  --bg2: #141416;
-  --bg3: #1C1C20;
-  --card: #1E1E23;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-  --text: #F0EFE8;
-  --muted: #7A7A82;
-  --dim: #4A4A52;
-  --purple: #9B6DFF;
-  --purple2: #C4A8FF;
-  --purple-bg: rgba(155,109,255,0.12);
-  --green: #4ADE80;
-  --green-bg: rgba(74,222,128,0.1);
-  --amber: #FBB03B;
-  --amber-bg: rgba(251,176,59,0.1);
-  --red: #FF6B6B;
-  --red-bg: rgba(255,107,107,0.1);
-  --blue: #60A5FA;
-  --blue-bg: rgba(96,165,250,0.1);
-  --pink: #F472B6;
-  --pink-bg: rgba(244,114,182,0.1);
-  --r: 12px;
-  --r2: 8px;
-}
+:root{--bg:#0D0D0F;--bg2:#141416;--bg3:#1C1C20;--card:#1E1E23;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#F0EFE8;--muted:#7A7A82;--dim:#3A3A42;--purple:#9B6DFF;--purple2:#C4A8FF;--pbg:rgba(155,109,255,0.12);--green:#4ADE80;--gbg:rgba(74,222,128,0.1);--amber:#FBB03B;--abg:rgba(251,176,59,0.1);--red:#FF6B6B;--rbg:rgba(255,107,107,0.1);--blue:#60A5FA;--bbg:rgba(96,165,250,0.1);--pink:#F472B6;--pkbg:rgba(244,114,182,0.1);--r:14px;--r2:9px}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:80px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:84px}
 h1,h2,h3,h4{font-family:'Syne',sans-serif}
-
 /* NAV */
-.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(13,13,15,0.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom)}
-.nav-btn{flex:1;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;border:none;background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.3px;transition:color .2s}
-.nav-btn.on{color:var(--purple)}
-.nav-btn svg{width:22px;height:22px}
-.nav-dot{width:4px;height:4px;border-radius:50%;background:var(--purple);display:none;margin:1px auto 0}
-.nav-btn.on .nav-dot{display:block}
-
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(13,13,15,0.96);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom)}
+.nb{flex:1;padding:10px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;border:none;background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:0.3px;transition:color .2s}
+.nb.on{color:var(--purple)}
+.nb svg{width:21px;height:21px;stroke-width:1.7}
 /* SCREENS */
-.screen{display:none;padding:0 0 1rem}
-.screen.on{display:block}
-
+.screen{display:none;padding-bottom:1rem}.screen.on{display:block}
 /* HEADER */
-.page-header{padding:52px 20px 16px;position:relative}
-.page-header h1{font-size:28px;font-weight:800;letter-spacing:-0.5px;line-height:1.1}
-.page-header p{font-size:13px;color:var(--muted);margin-top:4px}
-.header-accent{color:var(--purple)}
-
-/* CARDS */
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin:0 16px 10px}
-.card-sm{padding:12px 14px}
-
+.ph{padding:52px 18px 12px}.ph h1{font-size:26px;font-weight:800;letter-spacing:-.5px;line-height:1.1}.ph p{font-size:12px;color:var(--muted);margin-top:3px}
+.ha{color:var(--purple)}
+/* WEEK SELECTOR */
+.wsel{display:flex;align-items:center;gap:8px;padding:0 18px 14px}
+.wsel select{background:var(--bg3);border:1px solid var(--border2);border-radius:20px;color:var(--text);font-family:'Inter',sans-serif;font-size:12px;padding:6px 14px;outline:none;cursor:pointer;flex:1}
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:15px;margin:0 16px 10px}
 /* VERSE BANNER */
-.verse-banner{margin:12px 16px;background:linear-gradient(135deg,rgba(155,109,255,0.15),rgba(244,114,182,0.1));border:1px solid rgba(155,109,255,0.25);border-radius:var(--r);padding:16px}
-.verse-label{font-size:10px;font-weight:500;letter-spacing:1.5px;color:var(--purple2);text-transform:uppercase;margin-bottom:6px}
-.verse-text{font-size:14px;color:var(--text);line-height:1.6;font-style:italic}
-.verse-ref{font-size:12px;color:var(--muted);margin-top:6px;font-family:'Syne',sans-serif;font-weight:600}
-
-/* SECTION LABEL */
-.sec-label{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;padding:16px 20px 8px}
-
-/* WOD CARDS */
-.wod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:0 16px 10px;overflow:hidden}
-.wod-header{padding:14px 16px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.wod-num{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
-.wod-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
-.wod-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;padding:12px 16px 4px}
-.wod-meta{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 12px}
-.pill{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
-.pill-purple{background:var(--purple-bg);color:var(--purple2)}
-.pill-green{background:var(--green-bg);color:var(--green)}
-.pill-amber{background:var(--amber-bg);color:var(--amber)}
-.pill-red{background:var(--red-bg);color:var(--red)}
-.pill-blue{background:var(--blue-bg);color:var(--blue)}
-.pill-pink{background:var(--pink-bg);color:var(--pink)}
-.ex-row{display:flex;gap:10px;padding:9px 16px;border-top:1px solid var(--border);align-items:flex-start}
-.ex-reps{font-size:11px;color:var(--muted);min-width:76px;padding-top:1px;font-weight:500}
-.ex-name{font-size:13px;color:var(--text);flex:1;line-height:1.4}
-.ex-eq{font-size:11px;color:var(--dim);font-style:italic}
-.wod-tip{margin:0 16px;padding:10px 12px;border-radius:var(--r2);font-size:12px;line-height:1.5;margin-bottom:14px}
-.tip-green{background:var(--green-bg);color:#86EFAC;border-left:2px solid var(--green)}
-.tip-amber{background:var(--amber-bg);color:#FCD34D;border-left:2px solid var(--amber)}
-.tip-red{background:var(--red-bg);color:#FCA5A5;border-left:2px solid var(--red)}
-.tip-purple{background:var(--purple-bg);color:var(--purple2);border-left:2px solid var(--purple)}
-
+.vb{margin:10px 16px;background:linear-gradient(135deg,rgba(155,109,255,.15),rgba(244,114,182,.08));border:1px solid rgba(155,109,255,.28);border-radius:var(--r);padding:15px}
+.vl{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--purple2);text-transform:uppercase;margin-bottom:5px}
+.vt{font-size:13px;color:var(--text);line-height:1.6;font-style:italic}
+.vr{font-size:11px;color:var(--muted);margin-top:5px;font-family:'Syne',sans-serif;font-weight:600}
+/* SEC LABEL */
+.sl{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;padding:14px 18px 7px}
 /* DAY TABS */
-.day-tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 16px 0;scrollbar-width:none;-ms-overflow-style:none}
-.day-tabs::-webkit-scrollbar{display:none}
-.day-tab{flex-shrink:0;font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:'Inter',sans-serif}
-.day-tab.on{background:var(--purple);border-color:var(--purple);color:#fff}
-
-/* DAY PANEL */
-.day-panel{display:none}
-.day-panel.on{display:block}
-
-/* STATUS BADGE */
-.status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
-.s-done{background:var(--green-bg);color:var(--green)}
-.s-part{background:var(--amber-bg);color:var(--amber)}
-.s-no{background:rgba(255,255,255,0.06);color:var(--muted)}
-
-/* LINK INPUT */
-.link-box{margin:0 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.link-box-header{padding:12px 16px 10px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
-.link-input-row{display:flex;gap:8px;padding:12px}
-.link-input-row input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:10px 12px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;outline:none}
-.link-input-row input:focus{border-color:var(--purple)}
-.link-input-row input::placeholder{color:var(--dim)}
-.link-btn{background:var(--purple);color:#fff;border:none;border-radius:var(--r2);padding:10px 16px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif}
-.link-list{max-height:200px;overflow-y:auto}
-.link-item{padding:10px 16px;border-top:1px solid var(--border);font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.link-item a{color:var(--blue);text-decoration:none;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.link-cat{font-size:10px;font-weight:600;letter-spacing:1px;padding:2px 8px;border-radius:10px;flex-shrink:0}
-.cat-fitness{background:var(--green-bg);color:var(--green)}
-.cat-nutri{background:var(--amber-bg);color:var(--amber)}
-.cat-medidas{background:var(--blue-bg);color:var(--blue)}
-.cat-espiri{background:var(--purple-bg);color:var(--purple2)}
-.cat-salud{background:var(--red-bg);color:var(--red)}
-
-/* NUTRITION */
-.meal-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:0 16px 10px;overflow:hidden}
-.meal-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.meal-time{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
-.meal-kcal{font-size:12px;color:var(--muted)}
-.meal-body{padding:12px 16px}
-.meal-item{font-size:13px;color:var(--text);padding:5px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.meal-item:last-child{border:none}
-.meal-note{font-size:11px;color:var(--muted);font-style:italic}
-.macro-bar{display:flex;gap:6px;padding:10px 16px;border-top:1px solid var(--border)}
-.macro{flex:1;text-align:center}
-.macro-val{font-family:'Syne',sans-serif;font-size:15px;font-weight:700}
-.macro-lbl{font-size:10px;color:var(--muted);margin-top:2px}
-.alert-strip{margin:0 16px 10px;padding:10px 14px;border-radius:var(--r2);font-size:12px;line-height:1.5;border-left:3px solid}
-.alert-amber{background:var(--amber-bg);color:#FCD34D;border-color:var(--amber)}
-.alert-red{background:var(--red-bg);color:#FCA5A5;border-color:var(--red)}
-.alert-green{background:var(--green-bg);color:#86EFAC;border-color:var(--green)}
-
-/* MEDIDAS */
-.medida-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 10px}
-.medida-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:12px}
-.medida-label{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:500}
-.medida-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--purple2)}
-.medida-unit{font-size:12px;color:var(--muted);margin-left:2px}
-.medida-delta{font-size:11px;margin-top:2px}
-.delta-good{color:var(--green)}
-.delta-bad{color:var(--red)}
-.lock-overlay{margin:0 16px;background:var(--card);border:1px solid rgba(155,109,255,0.3);border-radius:var(--r);padding:32px 20px;text-align:center}
-.lock-overlay h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;color:var(--purple2)}
-.lock-overlay p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
-.unlock-btn{background:var(--purple);color:#fff;border:none;border-radius:var(--r2);padding:12px 24px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Syne',sans-serif;width:100%}
-.log-form{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;margin:0 16px 10px}
-.log-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.log-row:last-child{margin-bottom:0}
-.log-label{font-size:13px;color:var(--muted)}
-.log-input{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 12px;font-size:14px;color:var(--text);font-family:'Syne',sans-serif;font-weight:700;width:120px;text-align:right;outline:none}
-.log-input:focus{border-color:var(--purple)}
-.save-btn{width:calc(100% - 32px);margin:0 16px 10px;background:var(--purple);color:#fff;border:none;border-radius:var(--r2);padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;letter-spacing:0.3px}
-.save-btn:active{opacity:0.8}
-
-/* SALUD */
-.med-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
-.med-row:last-child{border:none}
-.med-name{font-size:13px;color:var(--text);font-weight:500}
-.med-dose{font-size:12px;color:var(--muted)}
-.med-time{font-size:11px;font-weight:600;padding:3px 8px;border-radius:10px;background:var(--purple-bg);color:var(--purple2)}
-
-/* ESPIRITUAL */
-.devo-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:0 16px 10px;overflow:hidden}
-.devo-day{padding:10px 16px;background:rgba(155,109,255,0.08);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.devo-day-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--purple2)}
-.devo-verse{padding:14px 16px;font-size:14px;color:var(--text);font-style:italic;line-height:1.6;border-bottom:1px solid var(--border)}
-.devo-frase{padding:12px 16px;font-size:13px;color:var(--amber);font-weight:500;line-height:1.5;font-family:'Syne',sans-serif;border-bottom:1px solid var(--border)}
-.devo-space{padding:12px 16px}
-.devo-space textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:10px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;line-height:1.5;resize:none;outline:none;min-height:60px}
-.devo-space textarea:focus{border-color:var(--purple)}
-.devo-space textarea::placeholder{color:var(--dim)}
-.devo-space label{font-size:11px;color:var(--muted);display:block;margin-bottom:5px;font-weight:500}
-
-/* PROGRESS RINGS */
-.progress-row{display:flex;gap:12px;margin:0 16px 10px;overflow-x:auto;padding-bottom:4px}
-.prog-item{flex-shrink:0;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:12px 16px}
-.prog-val{font-family:'Syne',sans-serif;font-size:20px;font-weight:800}
-.prog-lbl{font-size:10px;color:var(--muted);margin-top:2px;white-space:nowrap}
-
+.dtabs{display:flex;gap:6px;overflow-x:auto;padding:4px 16px 0;scrollbar-width:none}
+.dtabs::-webkit-scrollbar{display:none}
+.dtab{flex-shrink:0;font-size:11.5px;font-weight:500;padding:6px 13px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:'Inter',sans-serif}
+.dtab.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.dpanel{display:none}.dpanel.on{display:block}
+/* WOD CARD */
+.wc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:10px 16px 0;overflow:hidden}
+.wch{padding:12px 15px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.wcnum{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
+.wcbadge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+.wctitle{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;padding:11px 15px 4px}
+.wcmeta{display:flex;gap:5px;flex-wrap:wrap;padding:0 15px 10px}
+.pill{font-size:10.5px;padding:2px 9px;border-radius:20px;font-weight:500}
+.pp{background:var(--pbg);color:var(--purple2)}.gp{background:var(--gbg);color:var(--green)}.ap{background:var(--abg);color:var(--amber)}.rp{background:var(--rbg);color:var(--red)}.bp{background:var(--bbg);color:var(--blue)}.pkp{background:var(--pkbg);color:var(--pink)}
+.exrow{display:flex;gap:9px;padding:8px 15px;border-top:1px solid var(--border);align-items:flex-start}
+.exr{font-size:11px;color:var(--muted);min-width:72px;padding-top:1px;font-weight:500;flex-shrink:0}
+.exn{font-size:12.5px;color:var(--text);flex:1;line-height:1.4}
+.exe{font-size:11px;color:var(--dim);font-style:italic;display:block;margin-top:1px}
+.wtip{margin:0 15px 0;padding:9px 11px;border-radius:var(--r2);font-size:11.5px;line-height:1.5;border-left:2px solid}
+.tg{background:var(--gbg);color:#86EFAC;border-color:var(--green)}
+.ta{background:var(--abg);color:#FCD34D;border-color:var(--amber)}
+.tr{background:var(--rbg);color:#FCA5A5;border-color:var(--red)}
+.tp{background:var(--pbg);color:var(--purple2);border-color:var(--purple)}
+.tb{background:var(--bbg);color:#93C5FD;border-color:var(--blue)}
+/* CHECK + COMMENT */
+.wcheck{padding:11px 15px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.chk{width:20px;height:20px;border-radius:6px;border:2px solid var(--border2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.chk.done{background:var(--green);border-color:var(--green)}
+.chk.done::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+.chk-label{font-size:12px;color:var(--muted)}
+.wcomment{padding:0 15px 13px;border-top:1px solid var(--border)}
+.wcomment textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:9px 11px;font-size:12px;color:var(--text);font-family:'Inter',sans-serif;resize:none;outline:none;min-height:56px;margin-top:8px}
+.wcomment textarea:focus{border-color:var(--purple)}
+.wcomment textarea::placeholder{color:var(--dim)}
+/* VIDEO REFS */
+.vref{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:10px 16px 0;padding:13px 15px}
+.vref-title{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+.vlink{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.vlink:last-child{border:none;padding-bottom:0}
+.vlink-icon{width:32px;height:32px;border-radius:8px;background:var(--rbg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vlink-body a{font-size:12.5px;color:var(--blue);text-decoration:none;font-weight:500;display:block}
+.vlink-body span{font-size:11px;color:var(--muted)}
+/* PILL NAV */
+.pnav{display:flex;gap:6px;overflow-x:auto;padding:4px 16px 12px;scrollbar-width:none}
+.pnav::-webkit-scrollbar{display:none}
+.pnt{flex-shrink:0;font-size:11.5px;font-weight:500;padding:6px 13px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif}
+.pnt.on{background:var(--purple);border-color:var(--purple);color:#fff}
+/* MEAL */
+.mc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:0 16px 10px;overflow:hidden}
+.mch{padding:11px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.mct{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.mck{font-size:11.5px;color:var(--muted)}
+.mcb{padding:10px 15px}
+.mi{font-size:12.5px;color:var(--text);padding:5px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.mi:last-child{border:none}.min{font-size:11px;color:var(--muted);font-style:italic;text-align:right}
+.macrow{display:flex;gap:5px;padding:10px 15px;border-top:1px solid var(--border)}
+.mac{flex:1;text-align:center}.macv{font-family:'Syne',sans-serif;font-size:14px;font-weight:700}.macl{font-size:10px;color:var(--muted);margin-top:1px}
+/* MEDIDAS GRID */
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 10px}
+.mdc{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:11px}
+.mdl{font-size:11px;color:var(--muted);margin-bottom:3px;font-weight:500}
+.mdv{font-family:'Syne',sans-serif;font-size:21px;font-weight:700;color:var(--purple2)}
+.mdu{font-size:11px;color:var(--muted);margin-left:1px}
+.mdd{font-size:11px;margin-top:1px}
+.dg{color:var(--green)}.db{color:var(--red)}
+/* LOCK */
+.lock{margin:0 16px;background:var(--card);border:1px solid rgba(155,109,255,.3);border-radius:var(--r);padding:32px 20px;text-align:center}
+.lock h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;color:var(--purple2)}
+.lock p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+/* LOG FORM */
+.lf{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:13px;margin:0 16px 10px}
+.lr{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.lr:last-child{margin-bottom:0}
+.ll{font-size:12.5px;color:var(--muted)}
+.li{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:7px 11px;font-size:13px;color:var(--text);font-family:'Syne',sans-serif;font-weight:700;width:110px;text-align:right;outline:none}
+.li:focus{border-color:var(--purple)}
+/* BTNS */
+.btn-p{width:calc(100% - 32px);margin:0 16px 10px;background:var(--purple);color:#fff;border:none;border-radius:var(--r2);padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;letter-spacing:.3px}
+.btn-p:active{opacity:.8}
+/* MED ROW */
+.medr{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)}
+.medr:last-child{border:none}
+.medn{font-size:12.5px;color:var(--text);font-weight:500}
+.medd{font-size:11.5px;color:var(--muted)}
+.medt{font-size:11px;font-weight:600;padding:3px 8px;border-radius:10px;background:var(--pbg);color:var(--purple2);flex-shrink:0}
+/* ALERT */
+.alert{margin:0 16px 10px;padding:10px 13px;border-radius:var(--r2);font-size:12px;line-height:1.5;border-left:3px solid}
+.aa{background:var(--abg);color:#FCD34D;border-color:var(--amber)}
+.ag{background:var(--gbg);color:#86EFAC;border-color:var(--green)}
+.ar{background:var(--rbg);color:#FCA5A5;border-color:var(--red)}
+/* DEVO */
+.dvc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:0 16px 10px;overflow:hidden}
+.dvd{padding:9px 15px;background:rgba(155,109,255,.08);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.dvdn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--purple2)}
+.dvv{padding:13px 15px;font-size:13px;color:var(--text);font-style:italic;line-height:1.6;border-bottom:1px solid var(--border)}
+.dvf{padding:11px 15px;font-size:12.5px;color:var(--amber);font-weight:500;line-height:1.5;font-family:'Syne',sans-serif;border-bottom:1px solid var(--border)}
+.dvs{padding:11px 15px}
+.dvs label{font-size:10.5px;color:var(--muted);display:block;margin-bottom:4px;font-weight:500}
+.dvs textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:9px;font-size:12px;color:var(--text);font-family:'Inter',sans-serif;line-height:1.5;resize:none;outline:none;min-height:55px}
+.dvs textarea:focus{border-color:var(--purple)}
+/* LINK BOX */
+.lbox{margin:0 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.lbh{padding:11px 15px 9px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:7px}
+.linrow{display:flex;gap:7px;padding:10px}
+.linrow input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:9px 11px;font-size:12.5px;color:var(--text);font-family:'Inter',sans-serif;outline:none}
+.linrow input:focus{border-color:var(--purple)}
+.linrow input::placeholder{color:var(--dim)}
+.linrow button{background:var(--purple);color:#fff;border:none;border-radius:var(--r2);padding:9px 14px;font-size:12.5px;font-weight:500;cursor:pointer;white-space:nowrap}
+.llist{max-height:180px;overflow-y:auto}
+.litem{padding:9px 15px;border-top:1px solid var(--border);font-size:11.5px;display:flex;align-items:center;justify-content:space-between;gap:7px}
+.litem a{color:var(--blue);text-decoration:none;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lcat{font-size:9.5px;font-weight:600;letter-spacing:.8px;padding:2px 7px;border-radius:10px;flex-shrink:0}
+.lc-f{background:var(--gbg);color:var(--green)}.lc-n{background:var(--abg);color:var(--amber)}.lc-m{background:var(--bbg);color:var(--blue)}.lc-e{background:var(--pbg);color:var(--purple2)}.lc-s{background:var(--rbg);color:var(--red)}
 /* TOAST */
-.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-60px);background:var(--green);color:#fff;font-size:13px;font-weight:500;padding:10px 20px;border-radius:20px;z-index:999;transition:transform .3s;pointer-events:none}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-60px);background:var(--green);color:#000;font-size:12.5px;font-weight:600;padding:9px 18px;border-radius:20px;z-index:999;transition:transform .3s;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
-
-/* WEEK DAY STRIP */
-.week-strip{display:flex;gap:6px;overflow-x:auto;padding:8px 16px;scrollbar-width:none}
-.week-strip::-webkit-scrollbar{display:none}
-.wd{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 10px;border-radius:var(--r2);border:1px solid var(--border);cursor:pointer;transition:all .15s}
-.wd.on{background:var(--purple);border-color:var(--purple)}
-.wd-name{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
-.wd.on .wd-name{color:rgba(255,255,255,0.8)}
-.wd-dot{width:5px;height:5px;border-radius:50%;background:var(--border2)}
-.wd.done .wd-dot{background:var(--green)}
-.wd.partial .wd-dot{background:var(--amber)}
+/* DAY SUMMARY CARD */
+.dsum{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:0 16px 10px;overflow:hidden}
+.dsum-hdr{padding:10px 14px 8px;background:var(--pbg);border-bottom:1px solid var(--border)}
+.dsum-day{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--purple2)}
+.dsum-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.dsum-body{padding:10px 14px}
+.dsum-row{display:flex;gap:6px;margin-bottom:6px;align-items:flex-start}
+.dsum-row:last-child{margin-bottom:0}
+.dsum-icon{font-size:13px;flex-shrink:0;margin-top:1px}
+.dsum-txt{font-size:12px;color:var(--text);line-height:1.4}
+.dsum-muted{color:var(--muted)}
+/* FILE INPUT */
+.file-btn{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r2);padding:8px 13px;font-size:12px;color:var(--blue);cursor:pointer;font-family:'Inter',sans-serif}
+.file-btn input{display:none}
 </style>
 </head>
 <body>
-
-<!-- SCREENS -->
-
-<!-- DASHBOARD / HOME -->
+<!-- HOME -->
 <div class="screen on" id="s-home">
-  <div class="page-header">
-    <h1>Hola, <span class="header-accent">Taty</span> 👋</h1>
-    <p id="home-date">Cargando...</p>
-  </div>
-
-  <div class="verse-banner">
-    <div class="verse-label">Versículo de hoy</div>
-    <div class="verse-text" id="daily-verse">"Encomienda al Señor tu camino; confía en él, y él actuará."</div>
-    <div class="verse-ref" id="daily-ref">— Salmo 37:5</div>
-  </div>
-
-  <div class="sec-label">Tu semana</div>
-  <div class="week-strip" id="week-strip"></div>
-
-  <div class="sec-label">Resumen de hoy</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 10px">
-    <div class="card card-sm" style="margin:0">
-      <div class="medida-label">Peso actual</div>
-      <div class="medida-val">103.2<span class="medida-unit">kg</span></div>
-      <div class="medida-delta delta-good" id="peso-delta">↓ 2.8 kg desde inicio</div>
-    </div>
-    <div class="card card-sm" style="margin:0">
-      <div class="medida-label">Grasa visceral</div>
-      <div class="medida-val" style="color:var(--red)">16.0</div>
-      <div class="medida-delta delta-bad">Meta: reducir a 12</div>
-    </div>
-    <div class="card card-sm" style="margin:0">
-      <div class="medida-label">Músculo</div>
-      <div class="medida-val" style="color:var(--green)">51.1<span class="medida-unit">%</span></div>
-      <div class="medida-delta delta-good">Perfecto ✓</div>
-    </div>
-    <div class="card card-sm" style="margin:0">
-      <div class="medida-label">Agua corporal</div>
-      <div class="medida-val" style="color:var(--amber)">42.2<span class="medida-unit">%</span></div>
-      <div class="medida-delta delta-bad">Meta: 50%+</div>
-    </div>
-  </div>
-
-  <!-- LINK INBOX -->
-  <div class="sec-label">Agregar inspiración / video</div>
-  <div class="link-box">
-    <div class="link-box-header">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--purple)"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-      Pega cualquier link aquí
-    </div>
-    <div class="link-input-row">
-      <input type="url" id="link-url" placeholder="https://youtube.com/..." />
-      <button class="link-btn" onclick="addLink()">Enviar</button>
-    </div>
-    <div class="link-list" id="link-list"></div>
-  </div>
-
-  <div class="alert-strip alert-amber" style="margin-top:4px">
-    <strong>Tobillo:</strong> Sin step-ups ni box jumps esta semana. Consulta al médico esta semana — mereces atención de calidad.
-  </div>
+<div class="ph"><h1>Hola, <span class="ha">Taty</span> 👋</h1><p id="hdate">cargando...</p></div>
+<div class="vb"><div class="vl">Versículo de hoy</div><div class="vt" id="dvs">"Encomienda al Señor tu camino; confía en él, y él actuará."</div><div class="vr" id="dvr">— Salmo 37:5</div></div>
+<div class="sl">Tu semana — toca un día para ver el resumen</div>
+<div class="dtabs" id="home-tabs"></div>
+<div id="home-day-summary"></div>
+<div class="sl">Métricas actuales</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 10px">
+<div class="card" style="margin:0"><div class="mdl">Peso</div><div class="mdv">103.2<span class="mdu">kg</span></div><div class="mdd dg">↓ 2.8 kg desde inicio</div></div>
+<div class="card" style="margin:0"><div class="mdl">Grasa visceral</div><div class="mdv" style="color:var(--red)">16.0</div><div class="mdd db">Meta: bajar a 12</div></div>
+<div class="card" style="margin:0"><div class="mdl">Músculo</div><div class="mdv" style="color:var(--green)">51.1<span class="mdu">%</span></div><div class="mdd dg">Perfecto ✓</div></div>
+<div class="card" style="margin:0"><div class="mdl">Agua corporal</div><div class="mdv" style="color:var(--amber)">42.2<span class="mdu">%</span></div><div class="mdd db">Meta: 50%+</div></div>
+</div>
+<div class="sl">Agregar link · video · inspiración</div>
+<div class="lbox">
+<div class="lbh"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Pega cualquier link — yo lo clasifico</div>
+<div class="linrow"><input type="url" id="link-url" placeholder="https://youtube.com/..."><button onclick="addLink()">Enviar</button></div>
+<div class="llist" id="llist"></div>
+</div>
+<div class="alert aa">⚠ <strong>Tobillo:</strong> Sin step-ups ni box jumps. Consulta médico esta semana.</div>
 </div>
 
 <!-- FITNESS -->
 <div class="screen" id="s-fit">
-  <div class="page-header">
-    <h1><span class="header-accent">Fitness</span></h1>
-    <p>5 WODs diarios · Semana 2</p>
-  </div>
-
-  <div class="day-tabs" id="fit-tabs"></div>
-  <div id="fit-panels"></div>
+<div class="ph"><h1><span class="ha">Fitness</span></h1></div>
+<div class="wsel">
+<select id="fit-week" onchange="renderFit()">
+<option value="1">Semana 1 — actual</option>
+</select>
+</div>
+<div class="dtabs" id="fit-tabs"></div>
+<div id="fit-panels"></div>
 </div>
 
 <!-- NUTRICIÓN -->
 <div class="screen" id="s-nut">
-  <div class="page-header">
-    <h1><span class="header-accent">Nutrición</span></h1>
-    <p>Plan adaptado a tus labs · sin aguacate</p>
-  </div>
-
-  <div class="alert-strip alert-amber">
-    <strong>Hoy:</strong> Levotiroxina al despertar (30 min antes de todo) · luego licuado pre-entreno 5:30am
-  </div>
-
-  <div class="sec-label">Plan del día</div>
-
-  <div class="meal-card">
-    <div class="meal-header"><span class="meal-time">5:30 am · Pre-entreno</span><span class="meal-kcal">~150 kcal</span></div>
-    <div class="meal-body">
-      <div class="meal-item"><span>Licuado verde</span><span class="meal-note">espinaca + pepino + limón + 1 clara</span></div>
-      <div class="meal-item"><span>Sin fruta aquí</span><span class="meal-note">estómago vacío pre-workout</span></div>
-    </div>
-    <div class="wod-tip tip-green" style="margin:0 12px 12px">Mezcla: 1 puño espinaca · ½ pepino · jugo de 1 limón · 1 clara · agua · hielo. Listo en 2 min.</div>
-  </div>
-
-  <div class="meal-card">
-    <div class="meal-header"><span class="meal-time">6:30 am · Post-entreno</span><span class="meal-kcal">~280 kcal</span></div>
-    <div class="meal-body">
-      <div class="meal-item"><span>Proteína whey o vegetal</span><span class="meal-note">1 scoop</span></div>
-      <div class="meal-item"><span>1 plátano</span><span class="meal-note">recuperación muscular</span></div>
-      <div class="meal-item"><span>Colágeno en polvo Nutravit</span><span class="meal-note">1 cdita en el licuado</span></div>
-    </div>
-  </div>
-
-  <div class="meal-card">
-    <div class="meal-header"><span class="meal-time">10:00 am · Snack + Café</span><span class="meal-kcal">~230 kcal</span></div>
-    <div class="meal-body">
-      <div class="meal-item"><span>1 taza café con Coffee Mate</span><span class="meal-note">1 sola taza (bajamos de 2)</span></div>
-      <div class="meal-item"><span>15–20 almendras o nueces</span><span class="meal-note">grasas buenas · LDL↓</span></div>
-      <div class="meal-item"><span>Puño arándanos frescos o secos</span><span class="meal-note">sin azúcar añadida</span></div>
-    </div>
-    <div class="wod-tip tip-amber" style="margin:0 12px 12px">Todo esto en un tupper pequeño la noche anterior. 30 seg de prep.</div>
-  </div>
-
-  <div class="meal-card">
-    <div class="meal-header"><span class="meal-time">1:00 pm · Lunch trabajo</span><span class="meal-kcal">~380 kcal</span></div>
-    <div class="meal-body">
-      <div class="meal-item"><span>Opción A: Pechuga + arroz integral + ejotes</span><span class="meal-note">microondas 2 min</span></div>
-      <div class="meal-item"><span>Opción B: Atún + frijoles + jitomate</span><span class="meal-note">sin calentar</span></div>
-      <div class="meal-item"><span>Opción C: Huevo cocido x3 + verduras</span><span class="meal-note">prep domingo</span></div>
-    </div>
-    <div class="wod-tip tip-green" style="margin:0 12px 12px">Prep dominical: cocina 3 pechugas y arroz para toda la semana. 30 min · 5 días resueltos.</div>
-  </div>
-
-  <div class="meal-card">
-    <div class="meal-header"><span class="meal-time">5:30–6:00 pm · Comida fuerte</span><span class="meal-kcal">~500 kcal</span></div>
-    <div class="meal-body">
-      <div class="meal-item"><span>Proteína: 150g salmón / pollo / sardina</span><span class="meal-note">omega-3 baja LDL</span></div>
-      <div class="meal-item"><span>½ taza leguminosa (frijoles / lentejas)</span><span class="meal-note">hierro + fibra</span></div>
-      <div class="meal-item"><span>Verduras libres + ½ camote o tortilla maíz x2</span><span class="meal-note"></span></div>
-      <div class="meal-item"><span>1 cda aceite de oliva</span><span class="meal-note"></span></div>
-    </div>
-    <div class="macro-bar">
-      <div class="macro"><div class="macro-val" style="color:var(--blue)">~120g</div><div class="macro-lbl">Proteína</div></div>
-      <div class="macro"><div class="macro-val" style="color:var(--green)">~140g</div><div class="macro-lbl">Carbs</div></div>
-      <div class="macro"><div class="macro-val" style="color:var(--amber)">~48g</div><div class="macro-lbl">Grasa</div></div>
-      <div class="macro"><div class="macro-val" style="color:var(--muted)">~1,540</div><div class="macro-lbl">Kcal</div></div>
-    </div>
-  </div>
-
-  <div class="sec-label">Registro de hoy</div>
-  <div class="card">
-    <div style="margin-bottom:10px;font-size:13px;color:var(--muted)">¿Qué comiste? Cuéntame para ajustar</div>
-    <textarea id="nut-log" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:10px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;resize:none;outline:none;min-height:80px" placeholder="Ej: desayuné zucaritas con leche, snack almendras..." onchange="saveNutLog()"></textarea>
-  </div>
+<div class="ph"><h1><span class="ha">Nutrición</span></h1></div>
+<div class="wsel"><select id="nut-week" onchange="renderNut()"><option value="1">Semana 1 — actual</option></select></div>
+<div class="dtabs" id="nut-tabs"></div>
+<div id="nut-panels"></div>
 </div>
 
 <!-- MEDIDAS -->
 <div class="screen" id="s-med">
-  <div class="page-header">
-    <h1><span class="header-accent">Medidas</span></h1>
-    <p>Registro semanal · domingos en ayunas</p>
-  </div>
-  <div id="medidas-content"></div>
+<div class="ph"><h1><span class="ha">Medidas</span></h1><p>Registro semanal · domingos en ayunas</p></div>
+<div id="med-content"></div>
 </div>
 
 <!-- SALUD -->
 <div class="screen" id="s-sal">
-  <div class="page-header">
-    <h1><span class="header-accent">Salud</span></h1>
-    <p>Medicamentos · Suplementos · Laboratorios</p>
-  </div>
-
-  <div class="sec-label">Rutina de medicamentos</div>
-  <div class="card">
-    <div class="med-row">
-      <div><div class="med-name">Levotiroxina 50mcg</div><div class="med-dose">Media tableta de 100mg</div></div>
-      <span class="med-time">Al despertar</span>
-    </div>
-    <div style="font-size:11px;color:var(--amber);padding:6px 0 10px;border-bottom:1px solid var(--border)">⚠ 30-60 min antes de todo — sola con agua. Sin café, calcio ni hierro cerca.</div>
-    <div class="med-row">
-      <div><div class="med-name">Hidroclorotiazida 25mg</div><div class="med-dose">c/12 horas</div></div>
-      <span class="med-time">10am + 10pm</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Amlodipino 5mg</div><div class="med-dose">c/12 horas</div></div>
-      <span class="med-time">10am + 10pm</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Rosuvastatina 10mg</div><div class="med-dose">c/24 horas</div></div>
-      <span class="med-time">1pm comida</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Bezafibrato 200mg</div><div class="med-dose">c/24 horas</div></div>
-      <span class="med-time">1pm comida</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Losartan 50mg</div><div class="med-dose">c/12 horas</div></div>
-      <span class="med-time">6pm + 6am</span>
-    </div>
-  </div>
-
-  <div class="sec-label">Suplementos</div>
-  <div class="card">
-    <div class="med-row">
-      <div><div class="med-name">Colágeno gomitas (Gelasimi)</div><div class="med-dose">Termina estas primero</div></div>
-      <span class="med-time">Con desayuno</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Colágeno polvo Nutravit</div><div class="med-dose">Cuando termines las gomitas</div></div>
-      <span class="med-time">Licuado 6:30am</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Omega-3 (1,000–2,000mg)</div><div class="med-dose">Baja LDL — prioritario</div></div>
-      <span class="med-time">Comida fuerte</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">B12 + Ácido Fólico gomitas</div><div class="med-dose">Hemoglobina · MCV</div></div>
-      <span class="med-time">6pm cena</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Dualizyme (enzimas digestivas)</div><div class="med-dose">Con cada comida grande</div></div>
-      <span class="med-time">1pm + 6pm</span>
-    </div>
-    <div class="med-row">
-      <div><div class="med-name">Multi Gomi</div><div class="med-dose">Multivitamínico</div></div>
-      <span class="med-time">10am snack</span>
-    </div>
-  </div>
-
-  <div class="sec-label">Resultados de laboratorio</div>
-  <div class="card">
-    <div style="font-size:13px;color:var(--muted);margin-bottom:10px">Últimos resultados — Abril 2026</div>
-    <div class="med-row"><div class="med-name">TSH</div><div style="color:var(--red);font-weight:600;font-family:'Syne',sans-serif">4.59 <span style="font-size:11px;font-weight:400;color:var(--muted)">(alto — máx 4.2)</span></div></div>
-    <div class="med-row"><div class="med-name">Colesterol LDL</div><div style="color:var(--red);font-weight:600;font-family:'Syne',sans-serif">175 <span style="font-size:11px;font-weight:400;color:var(--muted)">(meta &lt;130)</span></div></div>
-    <div class="med-row"><div class="med-name">Colesterol HDL</div><div style="color:var(--green);font-weight:600;font-family:'Syne',sans-serif">67 ✓</div></div>
-    <div class="med-row"><div class="med-name">Triglicéridos</div><div style="color:var(--green);font-weight:600;font-family:'Syne',sans-serif">81 ✓</div></div>
-    <div class="med-row"><div class="med-name">Glucosa</div><div style="color:var(--green);font-weight:600;font-family:'Syne',sans-serif">84 ✓</div></div>
-    <div class="med-row"><div class="med-name">Hemoglobina</div><div style="color:var(--amber);font-weight:600;font-family:'Syne',sans-serif">12.1 <span style="font-size:11px;font-weight:400;color:var(--muted)">(borderline)</span></div></div>
-  </div>
-
-  <div class="sec-label">Agregar nuevo resultado</div>
-  <div class="card">
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <input id="lab-name" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:10px 12px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;outline:none" placeholder="Nombre del estudio o resultado" />
-      <textarea id="lab-val" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:10px 12px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;resize:none;outline:none;min-height:70px" placeholder="Valores, fecha, notas..."></textarea>
-      <button class="save-btn" style="margin:0;width:100%" onclick="saveLabResult()">Guardar resultado</button>
-    </div>
-    <div id="lab-history" style="margin-top:10px"></div>
-  </div>
+<div class="ph"><h1><span class="ha">Salud</span></h1><p>Medicamentos · Suplementos · Laboratorios</p></div>
+<div class="sl">Horario de medicamentos</div>
+<div class="card">
+<div class="medr"><div><div class="medn">Levotiroxina 50mcg</div><div class="medd">Media tableta de 100mg — SOLA con agua</div></div><span class="medt">Al despertar</span></div>
+<div style="font-size:11px;color:var(--amber);padding:5px 0 9px;border-bottom:1px solid var(--border)">⚠ 30–60 min antes de todo. Sin café, calcio ni hierro cerca.</div>
+<div class="medr"><div><div class="medn">Hidroclorotiazida 25mg</div><div class="medd">c/12 horas</div></div><span class="medt">10am + 10pm</span></div>
+<div class="medr"><div><div class="medn">Amlodipino 5mg</div><div class="medd">c/12 horas</div></div><span class="medt">10am + 10pm</span></div>
+<div class="medr"><div><div class="medn">Rosuvastatina 10mg</div><div class="medd">c/24 horas — con comida grande</div></div><span class="medt">1pm</span></div>
+<div class="medr"><div><div class="medn">Bezafibrato 200mg</div><div class="medd">c/24 horas</div></div><span class="medt">1pm</span></div>
+<div class="medr"><div><div class="medn">Losartan 50mg</div><div class="medd">c/12 horas</div></div><span class="medt">6am + 6pm</span></div>
+</div>
+<div class="sl">Suplementos</div>
+<div class="card">
+<div class="medr"><div><div class="medn">Colágeno gomitas (Gelasimi)</div><div class="medd">Termina estas primero</div></div><span class="medt">Con desayuno</span></div>
+<div class="medr"><div><div class="medn">Colágeno polvo Nutravit</div><div class="medd">Cuando termines las gomitas</div></div><span class="medt">Licuado 6:30am</span></div>
+<div class="medr"><div><div class="medn">Omega-3 (1,000–2,000mg)</div><div class="medd">Baja LDL — prioritario</div></div><span class="medt">Comida fuerte</span></div>
+<div class="medr"><div><div class="medn">B12 + Ácido Fólico gomitas</div><div class="medd">Hemoglobina · MCV borderline</div></div><span class="medt">6pm</span></div>
+<div class="medr"><div><div class="medn">Dualizyme enzimas digestivas</div><div class="medd">Con cada comida grande</div></div><span class="medt">1pm + 6pm</span></div>
+<div class="medr"><div><div class="medn">Multi Gomi</div><div class="medd">Multivitamínico</div></div><span class="medt">10am snack</span></div>
+</div>
+<div class="sl">Laboratorios y resultados</div>
+<div class="card">
+<div style="font-size:12px;color:var(--muted);margin-bottom:10px">Últimos resultados — Abril 2026</div>
+<div class="medr"><div class="medn">TSH</div><div style="color:var(--red);font-weight:700;font-family:'Syne',sans-serif">4.59 <span style="font-size:11px;font-weight:400;color:var(--muted)">(alto — máx 4.2)</span></div></div>
+<div class="medr"><div class="medn">Colesterol LDL</div><div style="color:var(--red);font-weight:700;font-family:'Syne',sans-serif">175 <span style="font-size:11px;font-weight:400;color:var(--muted)">(meta &lt;130)</span></div></div>
+<div class="medr"><div class="medn">HDL</div><div style="color:var(--green);font-weight:700;font-family:'Syne',sans-serif">67 ✓</div></div>
+<div class="medr"><div class="medn">Triglicéridos</div><div style="color:var(--green);font-weight:700;font-family:'Syne',sans-serif">81 ✓</div></div>
+<div class="medr"><div class="medn">Glucosa</div><div style="color:var(--green);font-weight:700;font-family:'Syne',sans-serif">84 ✓</div></div>
+<div class="medr"><div class="medn">Hemoglobina</div><div style="color:var(--amber);font-weight:700;font-family:'Syne',sans-serif">12.1 <span style="font-size:11px;font-weight:400;color:var(--muted)">(borderline)</span></div></div>
+</div>
+<div class="sl">Agregar nuevo resultado</div>
+<div class="card" style="display:flex;flex-direction:column;gap:9px">
+<input id="lab-name" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:9px 11px;font-size:12.5px;color:var(--text);font-family:'Inter',sans-serif;outline:none" placeholder="Nombre del estudio o resultado">
+<textarea id="lab-val" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:9px 11px;font-size:12.5px;color:var(--text);font-family:'Inter',sans-serif;resize:none;outline:none;min-height:65px" placeholder="Valores, fecha, notas..."></textarea>
+<label class="file-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Adjuntar PDF / imagen<input type="file" accept=".pdf,image/*" onchange="handleFile(this)"></label>
+<div id="file-name" style="font-size:11px;color:var(--green);display:none"></div>
+<button class="btn-p" style="margin:0;width:100%" onclick="saveLabResult()">Guardar resultado</button>
+</div>
+<div id="lab-history"></div>
 </div>
 
 <!-- ESPIRITUAL -->
 <div class="screen" id="s-esp">
-  <div class="page-header">
-    <h1><span class="header-accent">Espiritual</span></h1>
-    <p>Devocional diario · Yesenia Then</p>
-  </div>
-
-  <div class="card" style="background:linear-gradient(135deg,rgba(155,109,255,0.12),rgba(244,114,182,0.08));border-color:rgba(155,109,255,0.25)">
-    <div class="verse-label">Video de esta semana</div>
-    <div style="font-size:13px;color:var(--text);margin-bottom:4px;font-weight:500">"Esta es la semana de alineación para ti"</div>
-    <div style="font-size:12px;color:var(--muted)">Pastora Yesenia Then · Servicio domingo 03/05/2026</div>
-    <div style="font-size:12px;color:var(--blue);margin-top:8px">+ Hipopresivos: Laura Alvarado (10 min rutina express)</div>
-  </div>
-
-  <div class="sec-label">Devocional de la semana</div>
-  <div id="devo-list"></div>
+<div class="ph"><h1><span class="ha">Espiritual</span></h1><p>Devocional diario · Yesenia Then</p></div>
+<div class="card" style="background:linear-gradient(135deg,rgba(155,109,255,.12),rgba(244,114,182,.08));border-color:rgba(155,109,255,.25)">
+<div class="vl">Video de esta semana</div>
+<div style="font-size:13px;color:var(--text);margin-bottom:3px;font-weight:500">"Esta es la semana de alineación para ti"</div>
+<div style="font-size:11.5px;color:var(--muted)">Pastora Yesenia Then · Servicio 03/05/2026</div>
+<a href="https://www.youtube.com/watch?v=aqCuPFzE7F8" target="_blank" style="font-size:11.5px;color:var(--blue);display:block;margin-top:7px">▶ Ver video</a>
+</div>
+<div class="sl">Devocional de la semana</div>
+<div id="devo-list"></div>
 </div>
 
-<!-- BOTTOM NAV -->
+<!-- NAV -->
 <nav class="nav">
-  <button class="nav-btn on" onclick="nav('home',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    Inicio
-    <div class="nav-dot"></div>
-  </button>
-  <button class="nav-btn" onclick="nav('fit',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-    Fitness
-    <div class="nav-dot"></div>
-  </button>
-  <button class="nav-btn" onclick="nav('nut',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    Nutrición
-    <div class="nav-dot"></div>
-  </button>
-  <button class="nav-btn" onclick="nav('med',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-    Medidas
-    <div class="nav-dot"></div>
-  </button>
-  <button class="nav-btn" onclick="nav('sal',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-    Salud
-    <div class="nav-dot"></div>
-  </button>
-  <button class="nav-btn" onclick="nav('esp',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-    Fe
-    <div class="nav-dot"></div>
-  </button>
+<button class="nb on" onclick="goNav('home',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio</button>
+<button class="nb" onclick="goNav('fit',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6.5 6.5h11M6.5 17.5h11M4 12h16"/><circle cx="4" cy="6.5" r="1.5"/><circle cx="4" cy="17.5" r="1.5"/><circle cx="20" cy="6.5" r="1.5"/><circle cx="20" cy="17.5" r="1.5"/></svg>Fitness</button>
+<button class="nb" onclick="goNav('nut',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a10 10 0 0 1 0 20A10 10 0 0 1 12 2z"/><path d="M12 6v6l4 2"/></svg>Nutrición</button>
+<button class="nb" onclick="goNav('med',this);renderMed()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Medidas</button>
+<button class="nb" onclick="goNav('sal',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 21h8M12 17v4M7 4h10l1 8H6L7 4z"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/></svg>Salud</button>
+<button class="nb" onclick="goNav('esp',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Fe</button>
 </nav>
 <div class="toast" id="toast"></div>
 
 <script>
 // ── DATA ──────────────────────────────────────────────────────────────────────
-const DAYS=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-const DAYS_FULL=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const DAYS=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+const DAYS_FULL=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+const DAY_FOCUS=['Tríceps · Espalda · Core','Bíceps · Pecho · Hombro · HIIT','Core · Hipopresivos · Movilidad','Espalda · Bíceps · Core','Full Body · Fuerza','Medidas + Descanso activo','Hipopresivos suave · Recuperación'];
+const COL={purple:'#9B6DFF',green:'#4ADE80',amber:'#FBB03B',red:'#FF6B6B',blue:'#60A5FA',pink:'#F472B6'};
 
-const WODS={
-  0:[
-    {num:'WOD 1',type:'Hipopresivos · 10 min',color:'purple',title:'Activación suelo pélvico',pills:['purple|10 min','green|En ayunas','blue|3 series'],exs:[['4 reps','Exhala todo · apnea · costillas afuera 8 seg','descanso 30 seg'],['4 reps','Misma técnica · intenta 10 seg',''],['5 reps','Posición a gatas · 8 seg apnea','cuadrupedia']],tip:'green|Laura Alvarado en YouTube: "10 min rutina express hipopresivos" — síguela esta semana.'},
-    {num:'WOD 2',type:'Activación · 5 min',color:'green',title:'Calentamiento general',pills:['green|5 min','blue|Sin impacto'],exs:[['2 min','Marcha en brincolin suave','tobillo protegido'],['10 reps','Rotaciones de hombro + brazos','cada lado'],['10 reps','Cat-cow en piso','espalda'],['5 reps','Sentadilla aérea lenta','sin carga']],tip:'amber|Este WOD es el motor que prendes antes de dar gas. No lo saltes.'},
-    {num:'WOD 3',type:'Tren superior · 15 min',color:'blue',title:'Espalda + Tríceps',pills:['blue|15 min','amber|Moderado','purple|EMOM'],exs:[['Min impar — 6r','Remo barbell','barbell + 10lb'],['Min par — 8r','Remo mancuerna 1 mano c/lado','mancuerna 10lb'],['Al terminar — 10r','Press tríceps con banda overhead','banda media']],tip:'blue|Esta semana agrega los 10lb al barbell si la semana pasada lo hiciste sin peso.'},
-    {num:'WOD 4',type:'Core · 12 min',color:'amber',title:'Abdomen completo',pills:['amber|12 min','red|Alto','purple|Tabata 20s/10s'],exs:[['20 seg','Dead bug alterno','piso'],['20 seg','Russian twist','KB 25lb'],['20 seg','Plancha toque de hombro','peso corporal'],['20 seg','Brincolin talón-glúteo suave','tobillo']],tip:'green|El core es la faja de 360° que protege tu columna. Cada rep cuenta.'},
-    {num:'WOD 5',type:'Estiramiento · 10 min',color:'pink',title:'Cadena posterior + hombros',pills:['pink|10 min','green|Recuperación'],exs:[['45 seg','Estiramiento trapecio (inclina cabeza c/lado)',''],['45 seg','Estiramiento tríceps (brazo arriba)',''],['45 seg','Cat-cow lento',''],['1 min','Pigeon pose modificado (piso)','cadera / isquio'],['3 min','Masaje tobillo con aceite, círculos','hielo al final']],tip:'purple|El estiramiento no es opcional. Es cuando el músculo crece y el cuerpo recupera.'}
+const WODS_W1 = [
+  // LUNES
+  [
+    {num:'WOD 1',type:'MASAJE · HIPOPRESIVOS',typeColor:'purple',title:'Ritual de activación',pills:['pp|10 min','gp|En ayunas'],
+     exs:[['3 min','Automasaje abdomen — círculos grandes en sentido del reloj','aceite de almendras o bebé'],['3 min','Masaje muslos — movimientos ascendentes rodilla→ingle','drenaje linfático'],['4 reps x 3 series','Hipopresivos de pie — exhala todo, apnea, costillas afuera 10 seg','30 seg descanso entre series']],
+     tip:'tp|Laura Alvarado: busca "hipopresivos 10 min principiantes" en YouTube. También Rocío Marín Hipopresivos para variaciones.',
+     videos:[{url:'https://www.youtube.com/results?search_query=Rocio+Marin+hipopresivos+principiantes',label:'Rocío Marín · Hipopresivos',sub:'YouTube · principiantes'},{url:'https://www.youtube.com/results?search_query=Dianita+fit+masaje+reductivo+abdomen',label:'Dianita Fit · Masaje reductivo',sub:'YouTube · abdomen y muslos'}]},
+    {num:'WOD 2',type:'CALENTAMIENTO',typeColor:'green',title:'Activación general · 5 min',pills:['gp|5 min','bp|Sin impacto'],
+     exs:[['2 min','Marcha suave en brincolin','tobillo protegido'],['10 reps','Rotaciones de hombro y extensiones de brazo con banda',''],['10 reps','Sentadilla aérea lenta','sin carga']],tip:'gp|Levotiroxina → 30 min → licuado verde → calentamiento. En ese orden.',videos:[]},
+    {num:'WOD 3',type:'EMOM · 12 MIN',typeColor:'blue',title:'Espalda base',pills:['bp|12 min','ap|Moderado','pp|Resto del minuto'],
+     exs:[['Min impar — 6 reps','Remo con barbell (técnica)','barbell + discos 10lb'],['Min par — 8 reps','Remo con mancuerna a una mano','mancuerna 10lb c/lado']],tip:'bp|EMOM = Every Minute On the Minute. Haces las reps y descansas lo que sobre del minuto. Escala el peso si necesitas.',videos:[]},
+    {num:'WOD 4',type:'AMRAP · 10 MIN',typeColor:'amber',title:'Tríceps + Cardio',pills:['ap|10 min','rp|Moderado-alto','gp|Tantas rondas posibles'],
+     exs:[['10 reps','Press de tríceps con banda (overhead)','banda'],['8 reps','Skull crushers con mancuernas','mancuerna 10lb'],['30 seg','Brincolin — salto suave, rodilla baja','tobillo protegido']],tip:'ap|AMRAP = As Many Rounds As Possible. Anota cuántas rondas completas hiciste.',videos:[]},
+    {num:'WOD 5',type:'ESTIRAMIENTO · 8 MIN',typeColor:'pink',title:'Tríceps · Espalda · Hombros',pills:['pkp|8 min','gp|Obligatorio'],
+     exs:[['45 seg c/lado','Estiramiento tríceps (brazo arriba doblado)',''],['45 seg','Estiramiento espalda baja (posición de niño)','piso'],['1 min','Cat-cow lento','4 respiraciones por posición'],['2 min','Masaje final tobillo — círculos suaves alrededor','aceite + hielo 3 min']],tip:'pkp|El estiramiento no es opcional. Es cuando el músculo crece y recupera.',videos:[]}
   ],
-  1:[
-    {num:'WOD 1',type:'Hipopresivos · 10 min',color:'purple',title:'Semana 1 — serie completa',pills:['purple|10 min','green|Antes de entrenar'],exs:[['4 series','De pie · 5 reps x 10 seg apnea','30 seg descanso'],['3 series','Sentada · 4 reps x 8 seg','sin apoyarse'],['3 series','A gatas · 4 reps x 8 seg','cuadrupedia']],tip:'green|Cada día que practicas hipopresivos es un ladrillo en la cintura que quieres.'},
-    {num:'WOD 2',type:'Calentamiento · 5 min',color:'green',title:'Activación lunes',pills:['green|5 min'],exs:[['2 min','Brincolin marcha suave','tobillo'],['10 reps','Rotaciones hombro + extensiones brazo con banda',''],['10 reps','Sentadilla aérea','']],tip:'amber|Levotiroxina + 30 min + licuado verde + calentamiento. En ese orden.'},
-    {num:'WOD 3',type:'EMOM · 12 min',color:'blue',title:'Espalda base',pills:['blue|12 min','amber|Moderado'],exs:[['Min impar — 6r','Remo barbell técnica','barbell + 10lb'],['Min par — 8r','Remo mancuerna 1 mano','mancuerna 10lb']],tip:'blue|La espalda es la base del edificio. Si falla, todo lo demás colapsa.'},
-    {num:'WOD 4',type:'AMRAP · 10 min',color:'amber',title:'Tríceps + Brincolin',pills:['amber|10 min','red|Moderado-alto'],exs:[['10 reps','Press tríceps banda overhead','banda'],['8 reps','Skull crushers','mancuerna 10lb'],['30 seg','Brincolin salto suave','tobillo protegido']],tip:'amber|Tantas rondas como puedas en 10 min. Escribe cuántas hiciste.'},
-    {num:'WOD 5',type:'Estiramiento · 8 min',color:'pink',title:'Tríceps + Espalda',pills:['pink|8 min','green|Obligatorio'],exs:[['45 seg','Estiramiento tríceps cada brazo',''],['45 seg','Estiramiento espalda baja (niño)','piso'],['1 min','Gato-vaca lento',''],['2 min','Masaje abdomen círculos','aceite']],tip:'purple|Termina cada sesión con este WOD. Sin excepciones.'}
+  // MARTES
+  [
+    {num:'WOD 1',type:'MASAJE · HIPOPRESIVOS',typeColor:'purple',title:'Ritual de activación',pills:['pp|10 min','gp|Pre-entreno'],
+     exs:[['3 min','Masaje abdomen circular','aceite'],['3 min','Masaje muslos ascendente',''],['4 reps x 3 series','Hipopresivos de pie — progresión (intenta 12 seg)','']],tip:'tp|Ya llevas 2 días. Vas a notar que el abdomen se mete más fácil.',videos:[{url:'https://www.youtube.com/results?search_query=Dianita+fit+masaje+reductivo',label:'Dianita Fit · Masaje reductivo',sub:'YouTube · rutina completa'},{url:'https://www.youtube.com/results?search_query=hipopresivos+rutina+express+mujer',label:'Hipopresivos express · mujer',sub:'YouTube · 10 min'}]},
+    {num:'WOD 2',type:'CALENTAMIENTO',typeColor:'green',title:'Activación martes · 5 min',pills:['gp|5 min'],
+     exs:[['2 min','Brincolin marcha',''],['10 reps','Flexiones en pared',''],['10 reps','Rotaciones cruzadas de brazos','']],tip:'gp|',videos:[]},
+    {num:'WOD 3',type:'EMOM · 12 MIN',typeColor:'blue',title:'Push-Pull Express',pills:['bp|12 min','ap|Moderado'],
+     exs:[['Min A — 8 reps','Press pecho con mancuernas','mancuerna 10lb'],['Min B — 8 reps','Curl bíceps con barbell','barbell + 10lb'],['Min C — 8 reps','Press hombro sentada','mancuerna 10lb']],tip:'bp|3 movimientos rotando cada minuto. 12 min = 4 rondas completas.',videos:[]},
+    {num:'WOD 4',type:'CHIPPER · FOR TIME',typeColor:'amber',title:'Upper Body Chipper',pills:['ap|~15 min','rp|Alto','gp|1 ronda completa'],
+     exs:[['20 reps','Curl bíceps alterno','mancuerna 10lb'],['15 reps','Flexiones (rodillas si necesitas)','peso corporal'],['1 min','Brincolin suave','tobillo'],['12 reps','Lateral raise','mancuerna 10lb'],['8 reps','Dominadas asistidas con banda','barra + banda gruesa']],tip:'ap|CHIPPER = 1 sola ronda, de arriba abajo. Anota tu tiempo.',videos:[]},
+    {num:'WOD 5',type:'ESTIRAMIENTO · 8 MIN',typeColor:'pink',title:'Pecho · Bíceps · Hombro',pills:['pkp|8 min'],
+     exs:[['45 seg','Estiramiento pecho (manos entrelazadas atrás)',''],['45 seg c/lado','Estiramiento bíceps (brazo extendido)',''],['1 min c/lado','Estiramiento hombro (brazo cruzado)',''],['2 min','Masaje muslos + abdomen','aceite']],tip:'pkp|8 min que protegen tus articulaciones y ayudan contra la flacidez.',videos:[]}
   ],
-  2:[
-    {num:'WOD 1',type:'Hipopresivos · 10 min',color:'purple',title:'Progresión día 3',pills:['purple|10 min'],exs:[['5 series','De pie · 5 reps · intenta 12 seg',''],['3 series','Sentada · 5 reps',''],['3 series','A gatas · 5 reps','']],tip:'purple|Vas a sentir el abdomen trabajar diferente. Es normal. Es correcto.'},
-    {num:'WOD 2',type:'Calentamiento · 5 min',color:'green',title:'Activación martes',pills:['green|5 min'],exs:[['2 min','Brincolin marcha',''],['10 reps','Flexiones de pecho en pared',''],['10 reps','Rotaciones cruzadas de brazos','']],tip:'green|Sube la temperatura antes de levantar.'},
-    {num:'WOD 3',type:'EMOM · 12 min',color:'blue',title:'Push-Pull Express',pills:['blue|12 min','amber|Moderado'],exs:[['Min A — 8r','Press pecho mancuernas','mancuerna 10lb'],['Min B — 8r','Curl bíceps barbell','barbell + 10lb'],['Min C — 8r','Press hombro sentada','mancuerna 10lb']],tip:'blue|3 movimientos que cubren pecho, bíceps y hombro. Uno por minuto.'},
-    {num:'WOD 4',type:'Chipper · 15 min',color:'amber',title:'Upper body chipper',pills:['amber|15 min','red|Alto'],exs:[['20 reps','Curl bíceps alterno','mancuerna 10lb'],['15 reps','Flexiones (rodillas OK)','peso corporal'],['1 min','Brincolin suave','tobillo'],['12 reps','Lateral raise','mancuerna 10lb'],['8 reps','Dominadas asistidas','barra + banda']],tip:'amber|La semana pasada lo hiciste en 7 min. Trata de mejorar el tiempo.'},
-    {num:'WOD 5',type:'Estiramiento · 8 min',color:'pink',title:'Pecho + Bíceps + Hombro',pills:['pink|8 min'],exs:[['45 seg','Estiramiento pecho (manos entrelazadas atrás)',''],['45 seg','Estiramiento bíceps (brazo extendido)','cada lado'],['1 min','Estiramiento hombro (brazo cruzado)','cada lado'],['2 min','Masaje muslos y abdomen','aceite']],tip:'pink|Estira los músculos que acabas de trabajar. 8 minutos que valen oro.'}
+  // MIÉRCOLES
+  [
+    {num:'WOD 1',type:'MASAJE · HIPOPRESIVOS',typeColor:'purple',title:'Día de movilidad profunda',pills:['pp|15 min','bp|Recuperación activa'],
+     exs:[['5 min','Masaje abdomen + muslos completo','aceite almendras'],['5 reps x 4 series','Hipopresivos sentada — espalda recta, sin apoyarse','8–10 seg apnea'],['3 reps x 3 series','Hipopresivos a gatas — cuadrupedia','variación nueva']],tip:'tp|Miércoles es respiración profunda y postura. No se destruye, se consolida.',videos:[{url:'https://www.youtube.com/results?search_query=hipopresivos+posicion+cuadrupedia',label:'Hipopresivos a gatas',sub:'YouTube · variación avanzada'},{url:'https://www.youtube.com/results?search_query=masaje+drenaje+linfatico+piernas+casero',label:'Drenaje linfático piernas',sub:'YouTube · casero'}]},
+    {num:'WOD 2',type:'CALENTAMIENTO',typeColor:'green',title:'Activación movilidad · 5 min',pills:['gp|5 min','bp|Suave'],
+     exs:[['2 min','Brincolin marcha lenta','tobillo'],['10 reps','Cat-cow',''],['10 reps','Superman en piso','boca abajo']],tip:'gp|Hoy el cuerpo descansa activo.',videos:[]},
+    {num:'WOD 3',type:'TABATA · 12 MIN',typeColor:'blue',title:'Core 360°',pills:['bp|12 min','ap|Moderado','pp|20 seg trabajo / 10 seg descanso'],
+     exs:[['20 seg','Dead bug alterno','piso'],['20 seg','Plancha lateral derecha',''],['20 seg','Plancha lateral izquierda',''],['20 seg','Superman alternos','piso boca abajo']],tip:'bp|TABATA = 20 seg máximo esfuerzo / 10 seg descanso. 8 rondas por ejercicio.',videos:[]},
+    {num:'WOD 4',type:'FOR TIME · ~10 MIN',typeColor:'amber',title:'Glúteo + Femoral activo',pills:['ap|~10 min','gp|Bajo impacto'],
+     exs:[['45 seg','Curl femoral con banda (tumbada)','banda'],['45 seg','Abducción cadera con banda de pie','banda'],['45 seg','Puente glúteo unilateral lento','peso corporal']],tip:'ap|FOR TIME = completa la secuencia tan rápido como puedas. Anota tu tiempo. 3 rondas.',videos:[]},
+    {num:'WOD 5',type:'MASAJE · ESTIRAMIENTO · 15 MIN',typeColor:'pink',title:'Cuerpo completo',pills:['pkp|15 min'],
+     exs:[['5 min','Masaje abdomen + muslos + tobillo','aceite almendras'],['5 min','Estiramientos cadera y glúteo (paloma modificada)','piso'],['5 min','Tobillo: círculos suaves + hielo 3 min','']],tip:'pkp|El masaje reductivo necesita constancia. 3 veces/semana ya genera resultados en 4–6 semanas.',videos:[{url:'https://www.youtube.com/results?search_query=masaje+reductivo+abdomen+Dianita+fit',label:'Dianita Fit · Abdomen',sub:'YouTube'},{url:'https://www.youtube.com/results?search_query=masaje+anticelulitis+muslos+casero',label:'Masaje anticelulitis muslos',sub:'YouTube · casero'}]}
   ],
-  3:[
-    {num:'WOD 1',type:'Hipopresivos · 10 min',color:'purple',title:'Miércoles — Core profundo',pills:['purple|10 min'],exs:[['4 series','De pie progresión','10-12 seg'],['3 series','Sentada',''],['3 series','A gatas','']],tip:'purple|Miércoles es tu día de movilidad y respiración profunda.'},
-    {num:'WOD 2',type:'Calentamiento · 5 min',color:'green',title:'Movilidad general',pills:['green|5 min','blue|Suave'],exs:[['2 min','Brincolin marcha lenta','tobillo'],['10 reps','Cat-cow',''],['10 reps','Superman','boca abajo']],tip:'green|Hoy el cuerpo descansa activo — no es día de destruir, es de construir.'},
-    {num:'WOD 3',type:'Tabata · 12 min',color:'blue',title:'Core 360°',pills:['blue|12 min','amber|Moderado','purple|20s/10s'],exs:[['20 seg','Dead bug alterno','piso'],['20 seg','Plancha lateral derecha',''],['20 seg','Plancha lateral izquierda',''],['20 seg','Superman alternos','piso boca abajo']],tip:'blue|El core no es solo el six-pack. Es todo tu cilindro muscular de la cintura.'},
-    {num:'WOD 4',type:'Flex · 10 min',color:'amber',title:'Glúteo + Femoral activo',pills:['amber|10 min','green|Bajo'],exs:[['45 seg','Curl femoral con banda tumbada','banda'],['45 seg','Abducción cadera con banda de pie','banda'],['45 seg','Puente glúteo unilateral lento','peso corporal']],tip:'green|Baja intensidad hoy en pierna. Tobillo en observación.'},
-    {num:'WOD 5',type:'Masaje + Estiramiento · 15 min',color:'pink',title:'Cuerpo completo',pills:['pink|15 min'],exs:[['5 min','Masaje abdomen círculos + muslos ascendente','aceite almendras'],['5 min','Masaje tobillo alrededor (no sobre) la inflamación',''],['5 min','Estiramientos generales: cadera, espalda, hombros','']],tip:'pink|El masaje es parte del entrenamiento. No es lujo, es recuperación.'}
+  // JUEVES
+  [
+    {num:'WOD 1',type:'MASAJE · HIPOPRESIVOS',typeColor:'purple',title:'Ritual de activación',pills:['pp|10 min'],
+     exs:[['3 min','Masaje abdomen + muslos','aceite'],['5 reps x 4 series','Hipopresivos de pie — intenta 12–15 seg apnea',''],['3 reps x 3 series','Hipopresivos sentada','']],tip:'tp|Día 4. El cuerpo ya empieza a reconocer el movimiento. Sientes el abdomen diferente.',videos:[{url:'https://www.youtube.com/results?search_query=Rocio+Marin+hipopresivos+plana+abdomen',label:'Rocío Marín · Plana de abdomen',sub:'YouTube'},{url:'https://www.youtube.com/results?search_query=Dianita+fitcuerpolatino+masaje',label:'Dianita Fit · Masaje completo',sub:'YouTube'}]},
+    {num:'WOD 2',type:'CALENTAMIENTO',typeColor:'green',title:'Activación jueves · 5 min',pills:['gp|5 min'],
+     exs:[['2 min','Brincolin suave',''],['10 reps','Band pull-apart','banda'],['10 reps','Círculos de cadera','']],tip:'gp|',videos:[]},
+    {num:'WOD 3',type:'EMOM · 12 MIN',typeColor:'blue',title:'Pull Strength',pills:['bp|12 min','ap|Moderado'],
+     exs:[['Min impar — 5 reps','Dominadas asistidas (banda gruesa)','barra + banda'],['Min par — 10 reps','Curl concentrado mancuerna','mancuerna 10lb']],tip:'bp|Cada semana intenta usar una banda menos resistente. Las dominadas sin ayuda son el boss final.',videos:[]},
+    {num:'WOD 4',type:'CHIPPER · FOR TIME',typeColor:'amber',title:'Espalda + Brazos',pills:['ap|~15 min','rp|Alto'],
+     exs:[['25 reps','Curl bíceps con banda','banda'],['20 reps','Remo mancuerna (10 c/lado)','mancuerna 10lb'],['1.5 min','Brincolin ritmo libre','suave'],['15 reps','Face pull con banda en barra','banda + barra pull-up'],['10 reps','Hammer curl','mancuerna 10lb']],tip:'ap|Divide las reps como necesites. Lo importante es terminar el chipper. Anota tu tiempo.',videos:[]},
+    {num:'WOD 5',type:'ESTIRAMIENTO · 8 MIN',typeColor:'pink',title:'Espalda + Brazos',pills:['pkp|8 min'],
+     exs:[['45 seg c/lado','Estiramiento bíceps (brazo extendido pared)',''],['45 seg','Posición de niño (espalda)',''],['1 min','Rotaciones muñeca y antebrazo','cada lado'],['2 min','Masaje antebrazo + masaje tobillo','aceite']],tip:'pkp|Tus brazos están trabajando duro. Dales la recuperación que merecen.',videos:[]}
   ],
-  4:[
-    {num:'WOD 1',type:'Hipopresivos · 10 min',color:'purple',title:'Jueves — progresión semana',pills:['purple|10 min'],exs:[['5 series','De pie · 5 reps · 12 seg',''],['4 series','Sentada · 5 reps',''],['3 series','A gatas · 5 reps','']],tip:'purple|Ya llevas 4 días. Empieza a sentir la diferencia en la postura.'},
-    {num:'WOD 2',type:'Calentamiento · 5 min',color:'green',title:'Activación jueves',pills:['green|5 min'],exs:[['2 min','Brincolin suave',''],['10 reps','Band pull-apart','banda'],['10 reps','Círculos de cadera','']],tip:'green|'},
-    {num:'WOD 3',type:'EMOM · 12 min',color:'blue',title:'Pull Strength',pills:['blue|12 min','amber|Moderado'],exs:[['Min impar — 5r','Dominadas asistidas (banda gruesa)','barra + banda'],['Min par — 10r','Curl concentrado mancuerna','mancuerna 10lb']],tip:'blue|Cada semana intenta usar una banda menos resistente en las dominadas. Ese es el boss final.'},
-    {num:'WOD 4',type:'Chipper · 15 min',color:'amber',title:'Back and Arms',pills:['amber|15 min','red|Alto'],exs:[['25 reps','Curl bíceps con banda','banda'],['20 reps','Remo mancuerna 10 c/lado','mancuerna 10lb'],['1.5 min','Brincolin ritmo libre','suave'],['15 reps','Face pull banda en barra','banda + barra'],['10 reps','Hammer curl','mancuerna 10lb']],tip:'amber|Divide las reps como necesites. Lo importante es terminar el chipper.'},
-    {num:'WOD 5',type:'Estiramiento · 8 min',color:'pink',title:'Espalda + Brazos',pills:['pink|8 min'],exs:[['45 seg','Estiramiento bíceps (brazo extendido)','cada lado'],['45 seg','Estiramiento espalda (niño)',''],['1 min','Rotaciones de muñeca','cada mano'],['2 min','Masaje antebrazo + mano','aceite']],tip:'pink|Tus manos y muñecas trabajan mucho. Dales amor también.'}
+  // VIERNES
+  [
+    {num:'WOD 1',type:'MASAJE · HIPOPRESIVOS',typeColor:'purple',title:'Ritual full body · viernes',pills:['pp|10 min'],
+     exs:[['5 min','Masaje completo abdomen + muslos + glúteo','aceite almendras'],['5 reps x 5 series','Hipopresivos de pie — máxima progresión semana','15 seg si puedes']],tip:'tp|Viernes es tu día más fuerte. Empieza desde adentro.',videos:[{url:'https://www.youtube.com/results?search_query=hipopresivos+semana+1+resultados',label:'Hipopresivos semana 1 resultados',sub:'YouTube'},{url:'https://www.youtube.com/results?search_query=masaje+reductivo+completo+cuerpo',label:'Masaje reductivo cuerpo completo',sub:'YouTube'}]},
+    {num:'WOD 2',type:'CALENTAMIENTO',typeColor:'green',title:'Activación full body · 5 min',pills:['gp|5 min'],
+     exs:[['3 min','Brincolin mixto suave','tobillo'],['10 reps','Inchworm (caminar manos al piso)',''],['5 reps','Burpee sin salto','']],tip:'gp|',videos:[]},
+    {num:'WOD 3',type:'EMOM · 15 MIN',typeColor:'blue',title:'Los 3 grandes',pills:['bp|15 min','rp|Alto'],
+     exs:[['Min A — 5 reps','Deadlift (peso muerto) — técnica prioritaria','barbell + 10lb'],['Min B — 8 reps','Push press con barbell','barbell + 10lb'],['Min C — 6 reps','Remo con barbell','barbell + 10lb']],tip:'bp|Estos 3 movimientos son el tridente del CrossFit. Escala el peso siempre que la técnica lo requiera.',videos:[]},
+    {num:'WOD 4',type:'AMRAP · 12 MIN',typeColor:'amber',title:'Full Body AMRAP',pills:['ap|12 min','rp|Alto'],
+     exs:[['10 reps','Thruster (sentadilla + press) con mancuernas','mancuerna 10lb · sin salto'],['8 reps','Remo KB a dos manos','KB 25lb'],['1 min','Brincolin libre suave','tobillo'],['6 reps','Dominadas asistidas','barra + banda']],tip:'ap|¿Cuántas rondas? Escríbelo. La próxima semana lo mejoras.',videos:[]},
+    {num:'WOD 5',type:'ESTIRAMIENTO · 10 MIN',typeColor:'pink',title:'Full body recovery',pills:['pkp|10 min'],
+     exs:[['1 min','Estiramiento cadena posterior (toca punta pies)',''],['1 min c/lado','Estiramiento cadera (paloma modificada)','piso'],['1 min','Estiramiento pecho + hombros',''],['3 min','Masaje completo abdomen + muslos','aceite'],['1 min','Tobillo: hielo + círculos','']],tip:'pkp|Celebra que completaste la semana más difícil: la primera. Todo lo que sigue es progresión.',videos:[]}
   ],
-  5:[
-    {num:'WOD 1',type:'Hipopresivos · 10 min',color:'purple',title:'Viernes — full series',pills:['purple|10 min'],exs:[['5 series','De pie','12-15 seg'],['4 series','Sentada',''],['4 series','A gatas','']],tip:'purple|Viernes es el día más fuerte. Empieza desde adentro.'},
-    {num:'WOD 2',type:'Calentamiento · 5 min',color:'green',title:'Activación full body',pills:['green|5 min'],exs:[['3 min','Brincolin mixto suave','tobillo'],['10 reps','Inchworm (caminar manos al piso)',''],['5 reps','Burpee sin salto','']],tip:'green|'},
-    {num:'WOD 3',type:'EMOM · 15 min',color:'blue',title:'Los 3 grandes',pills:['blue|15 min','red|Alto'],exs:[['Min A — 5r','Deadlift · técnica prioritaria','barbell + 10lb'],['Min B — 8r','Push press barbell','barbell + 10lb'],['Min C — 6r','Remo barbell','barbell + 10lb']],tip:'blue|Deadlift con barbell sola o +10lb. La espalda baja se respeta. Próxima semana subimos.'},
-    {num:'WOD 4',type:'AMRAP · 12 min',color:'amber',title:'Full body AMRAP',pills:['amber|12 min','red|Alto'],exs:[['10 reps','Thruster (sentadilla+press) mancuernas','mancuerna 10lb · sin salto'],['8 reps','Remo KB a dos manos','KB 25lb'],['1 min','Brincolin libre suave','tobillo'],['6 reps','Dominadas asistidas','barra + banda']],tip:'amber|¿Cuántas rondas puedes hacer en 12 min? Escríbelo para comparar la próxima semana.'},
-    {num:'WOD 5',type:'Estiramiento · 10 min',color:'pink',title:'Full body recovery',pills:['pink|10 min'],exs:[['1 min','Estiramiento cadena posterior (toca punta pies)',''],['1 min','Estiramiento cadera (paloma modificada)','cada lado'],['1 min','Estiramiento pecho + hombros',''],['3 min','Masaje completo abdomen + muslos','aceite'],['1 min','Tobillo: hielo + círculos','']],tip:'pink|Viernes es tu semana completa. Celebra con un buen estiramiento.'}
+  // SÁBADO
+  [
+    {num:'WOD 1',type:'MASAJE · HIPOPRESIVOS',typeColor:'purple',title:'Sesión completa sábado',pills:['pp|15 min'],
+     exs:[['5 series','De pie — 5 reps x 15 seg (progresión de la semana)',''],['4 series','Sentada — 5 reps x 10 seg',''],['4 series','A gatas — 5 reps x 8 seg',''],['2 series','Decúbito (tumbada) — 4 reps','variación nueva']],tip:'tp|Una semana completa de hipopresivos. La cintura ya recibió el mensaje.',videos:[{url:'https://www.youtube.com/results?search_query=hipopresivos+decubito+supino',label:'Hipopresivos tumbada',sub:'YouTube · posición decúbito'},{url:'https://www.youtube.com/results?search_query=Dianita+fit+rutina+masaje+semanal',label:'Dianita Fit · Rutina semanal',sub:'YouTube'}]},
+    {num:'WOD 2',type:'CALENTAMIENTO · MOVILIDAD',typeColor:'green',title:'Descanso activo · 10 min',pills:['gp|10 min','bp|Suave'],
+     exs:[['5 min','Cat-cow + rotaciones cadera en piso',''],['5 min','Estiramientos generales cadena posterior','sin rebote']],tip:'gp|Hoy no se destruye. Hoy se consolida.',videos:[]},
+    {num:'WOD 3',type:'REGISTRO OBLIGATORIO',typeColor:'amber',title:'Medidas y métricas',pills:['ap|10 min','rp|Obligatorio'],
+     exs:[['Báscula OKOK','Captura todas las métricas en ayunas','peso · grasa · músculo · agua · visceral'],['Metro','Cintura · cadera · muslos · pecho · talones','misma hora, misma ropa'],['Foto','Frente y perfil · misma posición','guardar para comparar']],tip:'ap|Sin registro no hay comparación. Sin comparación no hay motivación. Ve a la sección Medidas.',videos:[]},
+    {num:'WOD 4',type:'FUERZA SUAVE · 15 MIN',typeColor:'blue',title:'Mantenimiento tren superior',pills:['bp|15 min','gp|Moderado'],
+     exs:[['3x10','Curl bíceps alterno','mancuerna 10lb'],['3x10','Press hombro sentada','mancuerna 10lb'],['3x10','Remo con banda','banda media']],tip:'bp|Sábado no destruye, mantiene. Ligero pero constante.',videos:[]},
+    {num:'WOD 5',type:'ESTIRAMIENTO · 10 MIN',typeColor:'pink',title:'Cierre de semana',pills:['pkp|10 min'],
+     exs:[['2 min','Estiramiento completo de brazos',''],['2 min','Estiramiento cadera y glúteo','piso'],['1 min','3 hipopresivos de cierre','respiración consciente'],['3 min','Masaje final + tobillo','aceite + hielo']],tip:'pkp|Cierra la semana con gratitud. Hiciste más de lo que creías poder. Ya eres diferente.',videos:[]}
   ],
-  6:[
-    {num:'WOD 1',type:'Hipopresivos · 15 min',color:'purple',title:'Sábado — sesión completa',pills:['purple|15 min'],exs:[['5 series','De pie · 5 reps · intenta 15 seg',''],['4 series','Sentada · 5 reps',''],['4 series','A gatas · 5 reps',''],['2 series','Decúbito (tumbada) · 4 reps','novedad']],tip:'purple|Ya llevas una semana. La cintura ya está recibiendo el mensaje.'},
-    {num:'WOD 2',type:'Movilidad · 20 min',color:'green',title:'Descanso activo',pills:['green|20 min','blue|Suave'],exs:[['5 min','Estiramientos cadena posterior','piso'],['5 min','Cat-cow + rotaciones cadera',''],['10 min','Masaje completo: abdomen + muslos + tobillo','aceite almendras']],tip:'green|Hoy no se destruye. Hoy se consolida lo que construiste en la semana.'},
-    {num:'WOD 3',type:'Registro · 10 min',color:'amber',title:'Medidas semanales',pills:['amber|Obligatorio','red|Domingo activa sección Medidas'],exs:[['Báscula OKOK','Captura todas las métricas en ayunas','peso · grasa · músculo · agua'],['Metro','Cintura · cadera · muslos · pecho','misma hora'],['Foto','Misma posición · misma ropa','frente y perfil']],tip:'amber|Sin registro no hay comparación. Sin comparación no hay motivación. 10 min que cambian todo.'},
-    {num:'WOD 4',type:'Fuerza suave · 15 min',color:'blue',title:'Mantenimiento tren superior',pills:['blue|15 min','green|Moderado'],exs:[['3x10','Curl bíceps alterno','mancuerna 10lb'],['3x10','Press hombro sentada','mancuerna 10lb'],['3x10','Remo con banda','banda media']],tip:'blue|'},
-    {num:'WOD 5',type:'Estiramiento · 10 min',color:'pink',title:'Cierre de semana',pills:['pink|10 min'],exs:[['2 min','Estiramiento completo de brazos',''],['2 min','Estiramiento cadera y glúteo',''],['1 min','Respiración profunda + hipopresivo final','3 reps'],['3 min','Masaje + tobillo','aceite + hielo']],tip:'pink|Cierra la semana con gratitud. Hiciste más de lo que creías poder.'}
+  // DOMINGO
+  [
+    {num:'WOD 1',type:'MASAJE · HIPOPRESIVOS',typeColor:'purple',title:'Domingo suave · activación',pills:['pp|10 min','gp|En ayunas'],
+     exs:[['3 min','Masaje abdomen suave','aceite'],['3 reps x 3 series','Hipopresivos de pie — suave, escucha el cuerpo',''],['2 reps x 2 series','Hipopresivos sentada','recuperación']],tip:'tp|Domingo es descanso. Los hipopresivos aquí son meditación activa, no esfuerzo.',videos:[{url:'https://www.youtube.com/results?search_query=Rocio+Marin+hipopresivos+relajacion',label:'Rocío Marín · Relajación',sub:'YouTube'},{url:'https://www.youtube.com/results?search_query=masaje+relajante+cuerpo+casa',label:'Masaje relajante casero',sub:'YouTube'}]},
+    {num:'WOD 2',type:'CALENTAMIENTO SUAVE',typeColor:'green',title:'Activación mínima',pills:['gp|5 min','bp|Muy suave'],
+     exs:[['5 min','Caminata suave o brincolin marcha lenta','tobillo']],tip:'gp|Domingo es para recargar energía, no gastarla.',videos:[]},
+    {num:'WOD 3',type:'MOVILIDAD · 15 MIN',typeColor:'blue',title:'Cuerpo completo',pills:['bp|15 min','gp|Suave'],
+     exs:[['5 min','Estiramientos completos (de cabeza a pies)','piso'],['5 min','Rotaciones articulares suaves','hombro, cadera, tobillo'],['5 min','Respiración diafragmática consciente','4 seg inhala, 4 seg mantén, 6 seg exhala']],tip:'bp|La movilidad del domingo protege todas tus articulaciones para la semana siguiente.',videos:[]},
+    {num:'WOD 4',type:'REFLEXIÓN · 5 MIN',typeColor:'amber',title:'Reporte semanal',pills:['ap|5 min'],
+     exs:[['','¿Cuántos WODs completé esta semana?','anota en tu mente'],['','¿Cómo me sentí el cuerpo?','fatiga, dolor, energía'],['','¿Qué quiero mejorar la próxima semana?','1 sola cosa concreta']],tip:'ap|Un día que reflexionas vale más que 10 días de hacer sin pensar. Cuéntame aquí cómo te fue.',videos:[]},
+    {num:'WOD 5',type:'MASAJE FINAL · 10 MIN',typeColor:'pink',title:'Cierre semanal',pills:['pkp|10 min'],
+     exs:[['5 min','Masaje reductivo abdomen + muslos','aceite almendras'],['3 min','Tobillo: masaje suave + hielo',''],['2 min','Respiración final + gratitud','']],tip:'pkp|Termina la semana con el cuerpo agradecido. La constancia ya es un hábito.',videos:[]}
   ]
-};
-
-const DEVO=[
-  {day:'Domingo',verse:'"Encomienda al Señor tu camino; confía en él, y él actuará."',ref:'Salmo 37:5',frase:'Dios llegó a ponerte orden. Ya tienes claridad. Ahora actúa.',accion:'Hipopresivos + activación + tobillo'},
-  {day:'Lunes',verse:'"Todo lo puedo en Cristo que me fortalece."',ref:'Filipenses 4:13',frase:'No entrenas sola. Cada repetición es un acto de fe en el propósito que Él diseñó para ti.',accion:'Completa los 5 WODs del día'},
-  {day:'Martes',verse:'"Los que esperan en el Señor renovarán sus fuerzas."',ref:'Isaías 40:31',frase:'El proceso es lento porque algo sólido se está construyendo. Lo rápido se cae.',accion:'Upper body completo — registra tu chipper'},
-  {day:'Miércoles',verse:'"A los que aman a Dios todas las cosas les ayudan a bien."',ref:'Romanos 8:28',frase:'Hasta los días que fallaste hacen parte del propósito. Hoy corriges el rumbo.',accion:'Core + masaje + 2L de agua'},
-  {day:'Jueves',verse:'"Yo te instruiré y te mostraré el camino."',ref:'Salmo 32:8',frase:'Él ya vio quién eres en el kilo 90. Hoy estás en el camino a encontrarte con esa versión.',accion:'Pull strength + chipper espalda'},
-  {day:'Viernes',verse:'"Se ciñe de fuerza y fortifica sus brazos."',ref:'Proverbios 31:17',frase:'La mujer de Proverbios 31 no se disculpaba por cuidarse. Tú tampoco tienes que hacerlo.',accion:'Full body — el día más fuerte'},
-  {day:'Sábado',verse:'"Soy una creación admirable."',ref:'Salmo 139:14',frase:'Cada kilo que bajes no te hace más valiosa. Ya eres admirable. El entreno es honor, no castigo.',accion:'Medidas + registro + celebra la semana'}
 ];
 
+// MEALS
+const MEALS_DAYS = DAYS_FULL.map((d,i)=>({
+  day:d,
+  meals:[
+    {time:'5:30am · Pre-entreno',kcal:'~150',items:[['Licuado verde','espinaca + pepino + limón + 1 clara'],['Sin fruta aquí','estómago vacío pre-workout']],tip:null},
+    {time:'6:30am · Post-entreno',kcal:'~280',items:[['Proteína whey o vegetal','1 scoop'],['1 plátano mediano','recuperación muscular'],['Colágeno polvo Nutravit','1 cdita en el licuado']],tip:null},
+    {time:'10:00am · Snack + Café',kcal:'~230',items:[['1 taza café + Coffee Mate','1 sola taza'],['15–20 almendras o nueces','LDL↓'],['Puño arándanos','sin azúcar añadida']],tip:'Prepara el snack en tupper la noche anterior. 30 seg de prep.'},
+    {time:'1:00pm · Lunch trabajo',kcal:'~380',items:i%2===0?[['Pechuga 150g + arroz integral + ejotes','microondas 2 min'],['1 tortilla maíz','carbohidrato complejo']]:[['Atún en agua 100g + frijoles + jitomate','sin calentar'],['Frutas: manzana o pera entera','fibra soluble']],tip:'Prep dominical: cocina 3 pechugas y arroz para la semana. 30 min, 5 días resueltos.'},
+    {time:'5:30–6:00pm · Comida fuerte',kcal:'~500',items:i%3===0?[['Salmón 150g','omega-3 baja LDL'],['½ taza frijoles','hierro + fibra'],['Verduras libres al vapor','brócoli, ejotes, zanahoria'],['½ camote + 1 cda aceite oliva','']]:[['Pechuga o sardinas 150g','proteína completa'],['½ taza lentejas o garbanzos',''],['Ensalada grande con limón y aceite oliva',''],['2 tortillas maíz','']],tip:null},
+  ],
+  total:{p:'~120g',c:'~140g',f:'~48g',k:'~1,540'}
+}));
+
+const DEVO=[
+  {day:'Lunes',verse:'"Todo lo puedo en Cristo que me fortalece."',ref:'Filipenses 4:13',frase:'No entrenas sola. Cada repetición es un acto de fe en el propósito que Él diseñó para ti.'},
+  {day:'Martes',verse:'"Los que esperan en el Señor renovarán sus fuerzas."',ref:'Isaías 40:31',frase:'El proceso es lento porque algo sólido se está construyendo. Lo rápido se cae.'},
+  {day:'Miércoles',verse:'"A los que aman a Dios todas las cosas les ayudan a bien."',ref:'Romanos 8:28',frase:'Hasta los días que fallaste hacen parte del propósito. Hoy corriges el rumbo.'},
+  {day:'Jueves',verse:'"Yo te instruiré y te mostraré el camino."',ref:'Salmo 32:8',frase:'Él ya vio quién eres en el kilo 90. Hoy estás en el camino a encontrarte con esa versión.'},
+  {day:'Viernes',verse:'"Se ciñe de fuerza y fortifica sus brazos."',ref:'Proverbios 31:17',frase:'La mujer de Proverbios 31 no se disculpaba por cuidarse. Tú tampoco tienes que hacerlo.'},
+  {day:'Sábado',verse:'"Soy una creación admirable."',ref:'Salmo 139:14',frase:'Cada kilo que bajes no te hace más valiosa. Ya eres admirable. El entreno es honor, no castigo.'},
+  {day:'Domingo',verse:'"Encomienda al Señor tu camino; confía en él, y él actuará."',ref:'Salmo 37:5',frase:'Esta es tu semana de alineación. Ya tienes claridad. Ahora descansa y confía.'},
+];
+
+const DAY_SUMMARY_FOOD=['Licuado verde · Snack nueces + arándanos · Pechuga + arroz · Comida fuerte','Licuado verde · Snack café + nueces · Atún + frijoles · Salmón + camote','Licuado verde · Snack nueces + arándanos · Pechuga + ejotes · Lentejas + verduras','Licuado verde · Snack café + nueces · Atún + ensalada · Pollo + frijoles','Licuado verde · Snack nueces + arándanos · Pechuga + arroz · Sardinas + camote','Prep dominical · Licuado · Snack ligero · Comida normal','Ayuno suave · Licuado verde + proteína · Comida ligera'];
+
 // ── STATE ─────────────────────────────────────────────────────────────────────
-let links = JSON.parse(localStorage.getItem('taty_links')||'[]');
-let medidas = JSON.parse(localStorage.getItem('taty_medidas')||'{"unlocked":false,"history":[{"date":"03/05/2026","peso":103.2,"cintura":118,"cadera":136,"pecho":123,"musloD":77,"musloI":78,"grasa":45,"musculo":51.1,"visceral":16,"agua":42.2}]}');
-let labs = JSON.parse(localStorage.getItem('taty_labs')||'[]');
-let nutLog = localStorage.getItem('taty_nutlog')||'';
-let devoNotes = JSON.parse(localStorage.getItem('taty_devo')||'{}');
+let links=JSON.parse(localStorage.getItem('ty_links')||'[]');
+let checks=JSON.parse(localStorage.getItem('ty_checks')||'{}');
+let comments=JSON.parse(localStorage.getItem('ty_comments')||'{}');
+let medidas=JSON.parse(localStorage.getItem('ty_medidas')||'{"unlocked":false,"history":[{"date":"03/05/2026","peso":103.2,"cintura":118,"cadera":136,"pecho":123,"musloD":77,"musloI":78,"grasa":45,"musculo":51.1,"visceral":16,"agua":42.2}]}');
+let labs=JSON.parse(localStorage.getItem('ty_labs')||'[]');
+let devoNotes=JSON.parse(localStorage.getItem('ty_devo')||'{}');
+let nutLogs=JSON.parse(localStorage.getItem('ty_nutlogs')||'{}');
 
 // ── NAV ───────────────────────────────────────────────────────────────────────
-function nav(id, btn){
+function goNav(id,btn){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   document.getElementById('s-'+id).classList.add('on');
   btn.classList.add('on');
-  if(id==='med') renderMedidas();
 }
-
 // ── TOAST ─────────────────────────────────────────────────────────────────────
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
-}
-
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 // ── LINKS ─────────────────────────────────────────────────────────────────────
-function catFromUrl(url){
-  const cats=[
-    ['yesenia','espiri'],['then','espiri'],['dios','espiri'],['fe ','espiri'],
-    ['hipopresivo','medidas'],['masaje','medidas'],['medidas','medidas'],
-    ['receta','nutri'],['comida','nutri'],['licuado','nutri'],['comer','nutri'],
-    ['workout','fitness'],['crossfit','fitness'],['entreno','fitness'],['ejercicio','fitness'],['wod','fitness'],
-    ['salud','salud'],['doctor','salud'],['médico','salud']
-  ];
-  const low=url.toLowerCase();
-  for(const[k,c] of cats) if(low.includes(k)) return c;
-  return 'fitness';
+function catFromUrl(u){
+  const l=u.toLowerCase();
+  if(/yesenia|then|predic|sermon|biblia|dios/.test(l))return'e';
+  if(/hipopresiv|masaje|medida|cuerpo|reducti/.test(l))return'm';
+  if(/receta|comida|licuado|nutrici|aliment|comer/.test(l))return'n';
+  if(/salud|doctor|medico|laborat|analisis/.test(l))return's';
+  return'f';
 }
-function catLabel(c){return{fitness:'FITNESS',nutri:'NUTRICIÓN',medidas:'MEDIDAS',espiri:'FE',salud:'SALUD'}[c]||c}
+const CATL={f:'FITNESS',n:'NUTRICIÓN',m:'MEDIDAS',e:'FE',s:'SALUD'};
+const CATCLS={f:'lc-f',n:'lc-n',m:'lc-m',e:'lc-e',s:'lc-s'};
 function addLink(){
   const inp=document.getElementById('link-url');
-  const url=inp.value.trim();
-  if(!url||!url.startsWith('http')){toast('Pega un link válido');return;}
-  const cat=catFromUrl(url);
-  links.unshift({url,cat,date:new Date().toLocaleDateString('es-MX')});
-  localStorage.setItem('taty_links',JSON.stringify(links));
-  inp.value='';
-  renderLinks();
-  toast('Link guardado como '+catLabel(cat));
+  const u=inp.value.trim();
+  if(!u.startsWith('http')){toast('Pega un link válido');return;}
+  links.unshift({url:u,cat:catFromUrl(u),date:new Date().toLocaleDateString('es-MX')});
+  localStorage.setItem('ty_links',JSON.stringify(links));
+  inp.value='';renderLinks();toast('Link guardado ✓');
 }
 function renderLinks(){
-  const el=document.getElementById('link-list');
-  if(!links.length){el.innerHTML='<div style="padding:12px 16px;font-size:12px;color:var(--dim)">Pega tu primer link arriba ↑</div>';return;}
-  el.innerHTML=links.slice(0,8).map(l=>`<div class="link-item"><a href="${l.url}" target="_blank">${l.url.replace('https://','').substring(0,45)}...</a><span class="link-cat cat-${l.cat}">${catLabel(l.cat)}</span></div>`).join('');
+  const el=document.getElementById('llist');
+  if(!links.length){el.innerHTML='<div style="padding:11px 15px;font-size:12px;color:var(--dim)">Pega tu primer link arriba ↑</div>';return;}
+  el.innerHTML=links.slice(0,10).map(l=>`<div class="litem"><a href="${l.url}" target="_blank">${l.url.replace('https://','').substring(0,40)}...</a><span class="lcat ${CATCLS[l.cat]}">${CATL[l.cat]}</span></div>`).join('');
 }
-
-// ── WEEK STRIP ────────────────────────────────────────────────────────────────
-let selDay=new Date().getDay();
-function renderWeekStrip(){
-  const el=document.getElementById('week-strip');
-  el.innerHTML=DAYS.map((d,i)=>`<div class="wd${i===selDay?' on':''}" onclick="selDay=${i};renderWeekStrip()">`+
-    `<div class="wd-name">${d}</div><div class="wd-dot"></div></div>`).join('');
+// ── HOME DAY TABS ─────────────────────────────────────────────────────────────
+let homeDay=new Date().getDay()===0?6:(new Date().getDay()-1);
+function renderHomeTabs(){
+  document.getElementById('home-tabs').innerHTML=DAYS.map((d,i)=>`<button class="dtab${i===homeDay?' on':''}" onclick="homeDay=${i};renderHomeTabs();renderHomeSummary()">${d}</button>`).join('');
+  renderHomeSummary();
 }
-
+function renderHomeSummary(){
+  const wods=WODS_W1[homeDay];
+  const done=wods.filter((_,wi)=>checks[`1_${homeDay}_${wi}`]).length;
+  const el=document.getElementById('home-day-summary');
+  el.innerHTML=`<div class="dsum">
+    <div class="dsum-hdr"><div class="dsum-day">${DAYS_FULL[homeDay]}</div><div class="dsum-sub">${DAY_FOCUS[homeDay]}</div></div>
+    <div class="dsum-body">
+      <div class="dsum-row"><span class="dsum-icon">💪</span><div class="dsum-txt"><strong>Músculos:</strong> ${DAY_FOCUS[homeDay]}</div></div>
+      <div class="dsum-row"><span class="dsum-icon">✅</span><div class="dsum-txt"><strong>WODs completados:</strong> ${done} / ${wods.length}</div></div>
+      <div class="dsum-row"><span class="dsum-icon">🥗</span><div class="dsum-txt"><span class="dsum-muted">${DAY_SUMMARY_FOOD[homeDay]}</span></div></div>
+    </div>
+  </div>`;
+}
 // ── FITNESS ───────────────────────────────────────────────────────────────────
-function renderFitness(){
+let fitDay=new Date().getDay()===0?6:(new Date().getDay()-1);
+function renderFit(){
   const tabs=document.getElementById('fit-tabs');
   const panels=document.getElementById('fit-panels');
-  tabs.innerHTML=DAYS.map((d,i)=>`<button class="day-tab${i===new Date().getDay()?' on':''}" onclick="showFitDay(${i})">${d}</button>`).join('');
-  panels.innerHTML=DAYS.map((d,i)=>`<div class="day-panel${i===new Date().getDay()?' on':''}" id="fp-${i}">${renderDayWods(i)}</div>`).join('');
+  tabs.innerHTML=DAYS.map((d,i)=>`<button class="dtab${i===fitDay?' on':''}" onclick="fitDay=${i};renderFit()">${d}</button>`).join('');
+  panels.innerHTML=DAYS.map((d,i)=>`<div class="dpanel${i===fitDay?' on':''}" id="fp-${i}">${buildDayPanel(i)}</div>`).join('');
 }
-function showFitDay(i){
-  document.querySelectorAll('.day-tab').forEach((t,j)=>t.classList.toggle('on',j===i));
-  document.querySelectorAll('.day-panel').forEach((p,j)=>p.classList.toggle('on',j===i));
-}
-function pillClass(p){return{purple:'pill-purple',green:'pill-green',amber:'pill-amber',red:'pill-red',blue:'pill-blue',pink:'pill-pink'}[p]||'pill-purple'}
-function tipClass(c){return{green:'tip-green',amber:'tip-amber',red:'tip-red',purple:'tip-purple'}[c]||'tip-green'}
-function renderDayWods(dayIdx){
-  const wods=WODS[dayIdx]||[];
-  const colorMap={purple:'#9B6DFF',green:'#4ADE80',blue:'#60A5FA',amber:'#FBB03B',pink:'#F472B6'};
-  return wods.map(w=>{
-    const [tc,tt]=w.type.split('|'); const tipColor=w.tip.split('|')[0]; const tipText=w.tip.split('|')[1];
-    return`<div class="wod-card">
-      <div class="wod-header"><span class="wod-num">${w.num}</span><span class="wod-badge" style="background:${colorMap[w.color]}22;color:${colorMap[w.color]}">${w.type}</span></div>
-      <div class="wod-title">${w.title}</div>
-      <div class="wod-meta">${w.pills.map(p=>{const[c,t]=p.split('|');return`<span class="pill ${pillClass(c)}">${t}</span>`}).join('')}</div>
-      ${w.exs.map(([r,n,e])=>`<div class="ex-row"><span class="ex-reps">${r}</span><span class="ex-name">${n}${e?`<br><span class="ex-eq">${e}</span>`:''}</span></div>`).join('')}
-      <div class="wod-tip ${tipClass(tipColor)}" style="margin:10px 0 0">${tipText}</div>
+function pillCls(c){return{pp:'pp',gp:'gp',ap:'ap',rp:'rp',bp:'bp',pkp:'pkp'}[c]||'pp'}
+function tipCls(c){return{t:'tp',g:'tg',a:'ta',r:'tr',b:'tb',p:'tp'}[c[0]]||'tg'}
+function buildDayPanel(di){
+  const wods=WODS_W1[di];
+  return wods.map((w,wi)=>{
+    const wk=1;const key=`${wk}_${di}_${wi}`;
+    const isDone=!!checks[key];
+    const cmt=comments[key]||'';
+    const tc=w.typeColor;
+    const badgeStyle=`background:${COL[tc]}22;color:${COL[tc]}`;
+    const tipParts=w.tip.split('|');const tipCl={purple:'tp',green:'tg',amber:'ta',red:'tr',blue:'tb',pink:'pkp'}[tc]||'tg';
+    const exHtml=w.exs.map(([r,n,e])=>`<div class="exrow"><span class="exr">${r}</span><span class="exn">${n}${e?`<span class="exe">${e}</span>`:''}</span></div>`).join('');
+    const pillHtml=w.pills.map(p=>{const[c,t]=p.split('|');return`<span class="pill ${pillCls(c)}">${t}</span>`}).join('');
+    const videoHtml=w.videos&&w.videos.length?`<div class="vref"><div class="vref-title">📺 Videos recomendados</div>${w.videos.map(v=>`<div class="vlink"><div class="vlink-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--red)" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.56V6.81a4.85 4.85 0 0 1-1.07-.12z"/></svg></div><div class="vlink-body"><a href="${v.url}" target="_blank">${v.label}</a><span>${v.sub}</span></div></div>`).join('')}</div>`:'';
+    return`<div class="wc">
+      <div class="wch"><span class="wcnum">${w.num}</span><span class="wcbadge" style="${badgeStyle}">${w.type}</span></div>
+      <div class="wctitle">${w.title}</div>
+      <div class="wcmeta">${pillHtml}</div>
+      ${exHtml}
+      <div class="wtip ${tipCl}" style="margin:10px 15px 0">${tipParts[1]||tipParts[0]}</div>
+      ${videoHtml}
+      <div class="wcheck">
+        <div class="chk${isDone?' done':''}" id="chk-${key}" onclick="toggleCheck('${key}')"></div>
+        <span class="chk-label">${isDone?'✓ Completado':'Marcar como hecho'}</span>
+      </div>
+      <div class="wcomment">
+        <textarea placeholder="¿Cómo te fue? Peso usado, reps, cómo se sintió..." onchange="saveComment('${key}',this.value)">${cmt}</textarea>
+      </div>
     </div>`;
   }).join('');
 }
-
-// ── MEDIDAS ───────────────────────────────────────────────────────────────────
-function checkSundayUnlock(){
-  const today=new Date();
-  if(today.getDay()===0) medidas.unlocked=true;
+function toggleCheck(key){
+  checks[key]=!checks[key];
+  localStorage.setItem('ty_checks',JSON.stringify(checks));
+  renderFit();renderHomeSummary();
 }
-function renderMedidas(){
-  checkSundayUnlock();
-  const el=document.getElementById('medidas-content');
-  const last=medidas.history[medidas.history.length-1];
-  if(!medidas.unlocked){
-    el.innerHTML=`<div class="lock-overlay">
-      <div style="font-size:40px;margin-bottom:12px">🔒</div>
-      <h3>Sección bloqueada</h3>
-      <p>Esta sección se desbloquea los <strong>domingos</strong> cuando registras tus medidas y resultados de la báscula OKOK.<br><br>Hoy es domingo — registra tus medidas para acceder.</p>
-      <button class="unlock-btn" onclick="unlockMedidas()">Registrar medidas de hoy</button>
+function saveComment(key,val){
+  comments[key]=val;
+  localStorage.setItem('ty_comments',JSON.stringify(comments));
+}
+// ── NUTRICIÓN ─────────────────────────────────────────────────────────────────
+let nutDay=new Date().getDay()===0?6:(new Date().getDay()-1);
+function renderNut(){
+  document.getElementById('nut-tabs').innerHTML=DAYS.map((d,i)=>`<button class="dtab${i===nutDay?' on':''}" onclick="nutDay=${i};renderNut()">${d}</button>`).join('');
+  const data=MEALS_DAYS[nutDay];
+  document.getElementById('nut-panels').innerHTML=`
+    <div style="height:10px"></div>
+    ${data.meals.map(m=>`<div class="mc">
+      <div class="mch"><span class="mct">${m.time}</span><span class="mck">${m.kcal} kcal</span></div>
+      <div class="mcb">${m.items.map(([n,d])=>`<div class="mi"><span>${n}</span><span class="min">${d}</span></div>`).join('')}</div>
+      ${m.tip?`<div class="wtip tg" style="margin:0 12px 12px">${m.tip}</div>`:''}
+    </div>`).join('')}
+    <div class="mc" style="margin-top:0">
+      <div class="macrow">
+        <div class="mac"><div class="macv" style="color:var(--blue)">${data.total.p}</div><div class="macl">Proteína</div></div>
+        <div class="mac"><div class="macv" style="color:var(--green)">${data.total.c}</div><div class="macl">Carbs</div></div>
+        <div class="mac"><div class="macv" style="color:var(--amber)">${data.total.f}</div><div class="macl">Grasa</div></div>
+        <div class="mac"><div class="macv" style="color:var(--muted)">${data.total.k}</div><div class="macl">Kcal</div></div>
+      </div>
+    </div>
+    <div class="sl">¿Qué comiste hoy realmente?</div>
+    <div class="card">
+      <textarea id="nut-log-${nutDay}" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:9px 11px;font-size:12.5px;color:var(--text);font-family:'Inter',sans-serif;resize:none;outline:none;min-height:80px" placeholder="Ej: desayuné zucaritas con leche, snack almendras y café..." onchange="saveNutLog(${nutDay},this.value)">${nutLogs[nutDay]||''}</textarea>
     </div>`;
-    return;
+}
+function saveNutLog(d,v){nutLogs[d]=v;localStorage.setItem('ty_nutlogs',JSON.stringify(nutLogs));}
+// ── MEDIDAS ───────────────────────────────────────────────────────────────────
+function renderMed(){
+  if(new Date().getDay()===0) medidas.unlocked=true;
+  const el=document.getElementById('med-content');
+  if(!medidas.unlocked){
+    el.innerHTML=`<div class="lock"><div style="font-size:36px;margin-bottom:10px">🔒</div><h3>Sección bloqueada</h3><p>Esta sección se desbloquea los <strong>domingos</strong> cuando registras tus medidas y resultados de la báscula OKOK.<br><br>Si hoy es domingo, registra para desbloquear.</p><button class="btn-p" style="margin:16px 0 0;width:100%" onclick="unlockMed()">Registrar medidas de hoy</button></div>`;return;
   }
-  const base=medidas.history[0];
+  const base=medidas.history[0];const last=medidas.history[medidas.history.length-1];
   el.innerHTML=`
-    <div class="sec-label">Medidas actuales · ${last.date}</div>
-    <div class="medida-grid">
-      ${mkMedCard('Peso','kg',last.peso,base.peso,false)}
-      ${mkMedCard('Grasa corporal','%',last.grasa,base.grasa,false)}
-      ${mkMedCard('Músculo','%',last.musculo,base.musculo,true)}
-      ${mkMedCard('Grasa visceral','',last.visceral,base.visceral,false)}
-      ${mkMedCard('Cintura','cm',last.cintura,base.cintura,false)}
-      ${mkMedCard('Cadera','cm',last.cadera,base.cadera,false)}
-      ${mkMedCard('Muslo Der','cm',last.musloD,base.musloD,false)}
-      ${mkMedCard('Agua','%',last.agua,base.agua,true)}
+    <div class="sl">Medidas actuales · ${last.date}</div>
+    <div class="mgrid">
+      ${mkMC('Peso','kg',last.peso,base.peso,false)}${mkMC('Grasa corporal','%',last.grasa,base.grasa,false)}
+      ${mkMC('Músculo','%',last.musculo,base.musculo,true)}${mkMC('Grasa visceral','',last.visceral,base.visceral,false)}
+      ${mkMC('Cintura','cm',last.cintura,base.cintura,false)}${mkMC('Cadera','cm',last.cadera,base.cadera,false)}
+      ${mkMC('Muslo der','cm',last.musloD,base.musloD,false)}${mkMC('Agua','%',last.agua,base.agua,true)}
     </div>
-    <div class="sec-label">Registrar esta semana</div>
-    <div class="log-form">
-      ${mkInput('Peso (kg)','log-peso','103.2')}
-      ${mkInput('Cintura (cm)','log-cin','118')}
-      ${mkInput('Cadera (cm)','log-cad','136')}
-      ${mkInput('Muslo der (cm)','log-mus','77')}
-      ${mkInput('Grasa (%)','log-gra','45')}
-      ${mkInput('Músculo (%)','log-mus2','51.1')}
-      ${mkInput('Agua (%)','log-ag','42.2')}
-      ${mkInput('Grasa visceral','log-vis','16')}
+    <div class="sl">Registrar esta semana</div>
+    <div class="lf">
+      ${mkLI('Peso (kg)','mp','103.2')}${mkLI('Cintura (cm)','mc','118')}${mkLI('Cadera (cm)','mca','136')}
+      ${mkLI('Muslo der (cm)','mmd','77')}${mkLI('Grasa (%)','mg','45')}${mkLI('Músculo (%)','mm2','51.1')}
+      ${mkLI('Agua (%)','ma','42.2')}${mkLI('Grasa visceral','mv','16')}
     </div>
-    <button class="save-btn" onclick="saveMedidas()">Guardar medidas</button>
-    <div class="sec-label">Historial</div>
-    ${medidas.history.map(h=>`<div class="card card-sm"><div style="display:flex;justify-content:space-between"><span style="font-family:'Syne',sans-serif;font-weight:700">${h.date}</span><span style="color:var(--purple2);font-family:'Syne',sans-serif;font-weight:700">${h.peso} kg</span></div><div style="font-size:12px;color:var(--muted);margin-top:4px">Cintura ${h.cintura}cm · Cadera ${h.cadera}cm · Grasa ${h.grasa}% · Músculo ${h.musculo}%</div></div>`).join('')}
-  `;
+    <button class="btn-p" onclick="saveMed()">Guardar medidas</button>
+    <div class="sl">Historial</div>
+    ${medidas.history.map(h=>`<div class="card" style="padding:11px 14px"><div style="display:flex;justify-content:space-between"><span style="font-family:'Syne',sans-serif;font-weight:700">${h.date}</span><span style="color:var(--purple2);font-family:'Syne',sans-serif;font-weight:700">${h.peso} kg</span></div><div style="font-size:11.5px;color:var(--muted);margin-top:3px">Cintura ${h.cintura}cm · Cadera ${h.cadera}cm · Grasa ${h.grasa}% · Músculo ${h.musculo}%</div></div>`).join('')}`;
 }
-function mkMedCard(lbl,unit,val,base,higherGood){
-  const diff=+(val-base).toFixed(1);
-  const good=higherGood?(diff>=0):(diff<=0);
-  const dstr=diff===0?'Sin cambio':(diff>0?`+${diff} ${unit}`:`${diff} ${unit}`);
-  return`<div class="medida-card"><div class="medida-label">${lbl}</div><div class="medida-val">${val}<span class="medida-unit">${unit}</span></div><div class="medida-delta ${diff===0?'':good?'delta-good':'delta-bad'}">${dstr}</div></div>`;
+function mkMC(l,u,v,b,hg){
+  const d=+(v-b).toFixed(1);const good=hg?(d>=0):(d<=0);
+  const ds=d===0?'Sin cambio':(d>0?`+${d} ${u}`:`${d} ${u}`);
+  return`<div class="mdc"><div class="mdl">${l}</div><div class="mdv">${v}<span class="mdu">${u}</span></div><div class="mdd ${d===0?'':good?'dg':'db'}">${ds}</div></div>`;
 }
-function mkInput(lbl,id,ph){
-  return`<div class="log-row"><span class="log-label">${lbl}</span><input class="log-input" id="${id}" placeholder="${ph}"></div>`;
+function mkLI(l,id,ph){return`<div class="lr"><span class="ll">${l}</span><input class="li" id="${id}" placeholder="${ph}"></div>`;}
+function unlockMed(){medidas.unlocked=true;localStorage.setItem('ty_medidas',JSON.stringify(medidas));renderMed();}
+function saveMed(){
+  const entry={date:new Date().toLocaleDateString('es-MX'),
+    peso:+document.getElementById('mp').value||medidas.history.slice(-1)[0].peso,
+    cintura:+document.getElementById('mc').value||0,cadera:+document.getElementById('mca').value||0,
+    musloD:+document.getElementById('mmd').value||0,grasa:+document.getElementById('mg').value||0,
+    musculo:+document.getElementById('mm2').value||0,agua:+document.getElementById('ma').value||0,
+    visceral:+document.getElementById('mv').value||0};
+  medidas.history.push(entry);localStorage.setItem('ty_medidas',JSON.stringify(medidas));
+  toast('Medidas guardadas ✓');renderMed();
 }
-function unlockMedidas(){medidas.unlocked=true;localStorage.setItem('taty_medidas',JSON.stringify(medidas));renderMedidas();}
-function saveMedidas(){
-  const entry={
-    date:new Date().toLocaleDateString('es-MX'),
-    peso:+document.getElementById('log-peso').value||medidas.history.slice(-1)[0].peso,
-    cintura:+document.getElementById('log-cin').value||0,
-    cadera:+document.getElementById('log-cad').value||0,
-    musloD:+document.getElementById('log-mus').value||0,
-    grasa:+document.getElementById('log-gra').value||0,
-    musculo:+document.getElementById('log-mus2').value||0,
-    agua:+document.getElementById('log-ag').value||0,
-    visceral:+document.getElementById('log-vis').value||0,
-  };
-  medidas.history.push(entry);
-  localStorage.setItem('taty_medidas',JSON.stringify(medidas));
-  toast('Medidas guardadas');
-  renderMedidas();
-}
-
 // ── LABS ──────────────────────────────────────────────────────────────────────
+function handleFile(inp){
+  const f=inp.files[0];if(!f)return;
+  const el=document.getElementById('file-name');el.textContent='📎 '+f.name;el.style.display='block';
+}
 function saveLabResult(){
   const name=document.getElementById('lab-name').value.trim();
   const val=document.getElementById('lab-val').value.trim();
-  if(!name) return;
+  if(!name)return;
   labs.unshift({name,val,date:new Date().toLocaleDateString('es-MX')});
-  localStorage.setItem('taty_labs',JSON.stringify(labs));
-  document.getElementById('lab-name').value='';
-  document.getElementById('lab-val').value='';
-  renderLabHistory();
-  toast('Resultado guardado');
+  localStorage.setItem('ty_labs',JSON.stringify(labs));
+  document.getElementById('lab-name').value='';document.getElementById('lab-val').value='';
+  document.getElementById('file-name').style.display='none';
+  renderLabHistory();toast('Resultado guardado ✓');
 }
 function renderLabHistory(){
   const el=document.getElementById('lab-history');
   if(!labs.length){el.innerHTML='';return;}
-  el.innerHTML=labs.slice(0,5).map(l=>`<div style="padding:8px 0;border-top:1px solid var(--border)"><div style="font-size:13px;font-weight:500">${l.name} <span style="font-size:11px;color:var(--muted)">${l.date}</span></div><div style="font-size:12px;color:var(--muted);margin-top:2px">${l.val}</div></div>`).join('');
+  el.innerHTML='<div class="sl" style="padding-top:14px">Historial de resultados</div>'+labs.slice(0,8).map(l=>`<div class="card" style="padding:11px 14px"><div style="font-size:13px;font-weight:500">${l.name} <span style="font-size:11px;color:var(--muted)">${l.date}</span></div><div style="font-size:12px;color:var(--muted);margin-top:3px">${l.val}</div></div>`).join('');
 }
-
-// ── NUTRICIÓN ─────────────────────────────────────────────────────────────────
-function saveNutLog(){
-  nutLog=document.getElementById('nut-log').value;
-  localStorage.setItem('taty_nutlog',nutLog);
-}
-
-// ── DEVOCIONAL ────────────────────────────────────────────────────────────────
+// ── DEVO ──────────────────────────────────────────────────────────────────────
 function renderDevo(){
-  const el=document.getElementById('devo-list');
-  el.innerHTML=DEVO.map((d,i)=>`<div class="devo-card">
-    <div class="devo-day"><span class="devo-day-name">${d.day}</span><span style="font-size:11px;color:var(--muted)">${d.accion}</span></div>
-    <div class="devo-verse">${d.verse}<div style="font-size:12px;color:var(--muted);margin-top:6px;font-family:'Syne',sans-serif;font-weight:600">${d.ref}</div></div>
-    <div class="devo-frase">${d.frase}</div>
-    <div class="devo-space">
-      <label>Lo que Dios me habló hoy</label>
-      <textarea placeholder="Escribe aquí lo que recibiste..." onchange="saveDevo(${i},this.value)">${devoNotes[i]||''}</textarea>
-    </div>
+  document.getElementById('devo-list').innerHTML=DEVO.map((d,i)=>`<div class="dvc">
+    <div class="dvd"><span class="dvdn">${d.day}</span></div>
+    <div class="dvv">${d.verse}<div style="font-size:11px;color:var(--muted);margin-top:5px;font-family:'Syne',sans-serif;font-weight:600">${d.ref}</div></div>
+    <div class="dvf">${d.frase}</div>
+    <div class="dvs"><label>Lo que Dios me habló hoy</label><textarea placeholder="Escribe aquí lo que recibiste..." onchange="saveDevo(${i},this.value)">${devoNotes[i]||''}</textarea></div>
   </div>`).join('');
 }
-function saveDevo(i,v){devoNotes[i]=v;localStorage.setItem('taty_devo',JSON.stringify(devoNotes));}
-
+function saveDevo(i,v){devoNotes[i]=v;localStorage.setItem('ty_devo',JSON.stringify(devoNotes));}
 // ── DATE ──────────────────────────────────────────────────────────────────────
 function setDate(){
-  const d=new Date();
-  document.getElementById('home-date').textContent=d.toLocaleDateString('es-MX',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('hdate').textContent=new Date().toLocaleDateString('es-MX',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const today=new Date().getDay();
+  const idx=today===0?6:today-1;
+  if(DEVO[idx]){document.getElementById('dvs').textContent=DEVO[idx].verse;document.getElementById('dvr').textContent='— '+DEVO[idx].ref;}
 }
-
 // ── INIT ──────────────────────────────────────────────────────────────────────
-setDate();
-renderWeekStrip();
-renderLinks();
-renderFitness();
-renderDevo();
-renderLabHistory();
-if(document.getElementById('nut-log')) document.getElementById('nut-log').value=nutLog;
+setDate();renderLinks();renderHomeTabs();renderFit();renderNut();renderDevo();renderLabHistory();
 </script>
 </body>
 </html>
